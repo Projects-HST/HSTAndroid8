@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "980361906804",
+    "firebase_url": "https://ops-app-e893b.firebaseio.com",
+    "project_id": "ops-app-e893b",
+    "storage_bucket": "ops-app-e893b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980361906804:android:5b8d414a7d5c7da0f89f21",
+        "android_client_info": {
+          "package_name": "com.hst.ops"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "980361906804-no0tq5b6uk8fpcg3ps3fueeu6h76436k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCL1wTVPnUFZ094-eZ6kfYPzdlOgVpFf9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "980361906804-no0tq5b6uk8fpcg3ps3fueeu6h76436k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
