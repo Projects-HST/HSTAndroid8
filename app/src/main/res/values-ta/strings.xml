@@ -30,4 +30,9 @@
     <string name="select_tamil">தமிழ்</string>
     <string name="confirm">உறுதி செய்க</string>
 
+    <!--Notification-->
+    <string name="notification_title">Notification</string>
+    <string name="notification_nothing">Nothing here!!!</string>
+    <string name="notification_check_after">Check for the notification after \nsometime</string>
+
 </resources>

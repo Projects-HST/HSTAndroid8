@@ -2,6 +2,28 @@ package com.hst.ops.utils;
 
 public class OPSConstants {
 
+
+    //URL'S
+    //BASE URL
+    private static final String BASE_URL = "https://happysanz.in/";
+
+    //Development Mode
+    //development
+//    public static final String JOINT_URL = "development/";
+    //uat
+//    public static final String JOINT_URL = "uat/";
+    //live
+    public static final String JOINT_URL = "opsweb/";
+    //
+//    //BUILD URL
+    public static final String BUILD_URL = BASE_URL + JOINT_URL + "apiandroid/";
+
+
+    //CONSTITUENCY URL
+    public static final String GET_INTRO_VIDEO = "intro_video/";
+
+
+
     //////    Service Params    ///////
 
 
@@ -33,6 +55,13 @@ public class OPSConstants {
     public static String ALERT_DIALOG_TAG = "alertDialogTag";
     public static String ALERT_DIALOG_POS_BUTTON = "alert_dialog_pos_button";
     public static String ALERT_DIALOG_NEG_BUTTON = "alert_dialog_neg_button";
+
+
+    //    USER DATA
+
+    public static String KEY_USER_ID = "user_id";
+    public static String KEY_VERSION = "version_code";
+    public static String VERSION_VALUE = "1";
 
 
 

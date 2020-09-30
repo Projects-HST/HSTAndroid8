@@ -13,8 +13,11 @@
     <string name="error_occurred">Failed to connect to the server. Please try again.</string>
     <string name="error_entry">Entry Invalid</string>
     <string name="empty_entry">Field cannot be empty</string>
-    <string name="drawer_open">Drawer open</string>
-    <string name="drawer_close">Drawer close</string>
+    <string name="mismatch_entry">Password mismatch</string>
+    <string name="error_username">Username cannot be empty</string>
+    <string name="error_password">Password cannot be empty</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
 
     <!--Bottom menu-->
     <string name="menu_home">Home</string>
@@ -29,6 +32,11 @@
     <string name="select_english">English</string>
     <string name="select_tamil">தமிழ்</string>
     <string name="confirm">Confirm</string>
+
+    <!--Notification-->
+    <string name="notification_title">Notification</string>
+    <string name="notification_nothing">Nothing here!!!</string>
+    <string name="notification_check_after">Check for the notification after \nsometime</string>
 
 
 
