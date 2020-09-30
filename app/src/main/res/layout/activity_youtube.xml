@@ -64,143 +64,69 @@
 
     </RelativeLayout>
 
-    <FrameLayout
-        android:id="@+id/fragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="120dp"
-        android:layout_marginBottom="60dp" />
-
     <RelativeLayout
-        android:id="@+id/select_language_layout"
+        android:id="@+id/cancel_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="bottom"
-        android:gravity="bottom"
-        android:visibility="gone"
-        android:elevation="20dp"
-        android:background="@color/transparent_black">
+        android:background="@color/transparent_black"
+        android:elevation="20dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shadow_oval">
+            android:layout_centerInParent="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/shadow_round">
 
             <TextView
-                android:id="@+id/select_language_txt"
+                android:id="@+id/welcom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/semi_bold"
-                android:layout_marginTop="20dp"
-                android:text="@string/select_language"
                 android:textColor="@color/black"
+                android:text="Welcome!!"
                 android:textSize="20sp" />
 
-            <RelativeLayout
-                android:id="@+id/english"
+            <TextView
+                android:id="@+id/more_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/welcom"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/regular"
+                android:text="Know more about O. Panneerselvam APP"
+                android:textSize="15sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/constraint_layout"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="20dp"
-                android:layout_below="@id/select_language_txt"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_below="@+id/more_info"
+                tools:context=".activity.YoutubeActivity">
 
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/img_english"
-                    android:text="A"
-                    android:layout_marginStart="20dp"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/regular"
-                    android:layout_alignParentStart="true"
-                    android:gravity="center"
-                    android:layout_centerVertical="true"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:text="@string/select_english"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:layout_marginStart="90dp"
-                    android:fontFamily="@font/medium"
-                    android:gravity="center"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"/>
-
-                <ImageView
-                    android:id="@+id/img_eng_check"
-                    android:layout_width="20dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic_check"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="20dp"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/tamil"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_below="@id/english"
-                android:layout_marginTop="20dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/img_tamil"
-                    android:text="அ"
-                    android:layout_marginStart="20dp"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/regular"
-                    android:layout_alignParentStart="true"
-                    android:gravity="center"
-                    android:layout_centerVertical="true"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:text="@string/select_tamil"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:layout_marginStart="90dp"
-                    android:fontFamily="@font/medium"
-                    android:gravity="center"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"/>
-
-                <ImageView
-                    android:id="@+id/img_tamil_check"
-                    android:layout_width="20dp"
-                    android:layout_height="50dp"
-                    android:visibility="gone"
-                    android:src="@drawable/ic_check"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="20dp"/>
-
-            </RelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button
-                android:id="@+id/confirm_language"
+                android:id="@+id/button_close"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_below="@id/tamil"
-                android:layout_marginTop="20dp"
+                android:layout_below="@id/constraint_layout"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:text="@string/confirm"
+                android:layout_marginBottom="20dp"
+                android:text="@string/drawer_close"
+                android:textColor="@color/white"
                 android:textAllCaps="false"
-                android:fontFamily="@font/regular"
+                android:background="@drawable/button_round_app_colour"
+                android:fontFamily="@font/semi_bold"
                 android:textSize="18sp"/>
 
         </RelativeLayout>
-
 
     </RelativeLayout>
 

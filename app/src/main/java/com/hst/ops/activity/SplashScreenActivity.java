@@ -13,6 +13,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.hst.ops.R;
+import com.hst.ops.utils.OPSValidator;
+import com.hst.ops.utils.PreferenceStorage;
 
 public class SplashScreenActivity extends Activity {
 
@@ -36,9 +38,22 @@ public class SplashScreenActivity extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashScreenActivity.this, MainActivity.class);
-                i.putExtra("page", "splash");
-                startActivity(i);
+                if (PreferenceStorage.isFirstTimeLaunch(getApplicationContext())) {
+                    FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(SplashScreenActivity.this, new OnSuccessListener<InstanceIdResult>() {
+                        @Override
+                        public void onSuccess(InstanceIdResult instanceIdResult) {
+                            String newToken = instanceIdResult.getToken();
+                            Log.e("newToken", newToken);
+                            PreferenceStorage.saveGCM(getApplicationContext(), newToken);
+                        }
+                    });
+                    Intent i = new Intent(SplashScreenActivity.this, YoutubeActivity.class);
+                    i.putExtra("page", "splash");
+                    startActivity(i);
+                } else {
+                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(i);
+                }
                 finish();
             }
         }, SPLASH_TIME_OUT);
