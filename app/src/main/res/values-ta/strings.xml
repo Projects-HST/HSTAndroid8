@@ -26,4 +26,11 @@
     <string name="menu_social">Social</string>
     <string name="menu_ops">O.P.S</string>
 
+    <!--Dashboard-->
+    <string name="ops_fullname">O. Panneerselvam</string>
+    <string name="select_language">Select Language</string>
+    <string name="select_english">English</string>
+    <string name="select_tamil">தமிழ்</string>
+    <string name="confirm">Confirm</string>
+
 </resources>
