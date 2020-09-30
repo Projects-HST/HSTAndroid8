@@ -1,18 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_navigation"
+        android:layout_below="@+id/activity_toolbar" />
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:backgroundTint="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/homePage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.17">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/home_img"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_home"
+                    android:layout_centerHorizontal="true"
+                    app:tint="@color/menu_grey" />
+
+                <TextView
+                    android:id="@+id/home_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/menu_home"
+                    android:fontFamily="@font/regular"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/menu_grey"
+                    android:layout_below="@id/home_img"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/gallery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/homePage"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.2">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/gallery_img"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_gallery"
+                    android:layout_centerHorizontal="true"
+                    app:tint="@color/menu_grey" />
+
+                <TextView
+                    android:id="@+id/gallery_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/menu_gallery"
+                    android:fontFamily="@font/regular"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/menu_grey"
+                    android:layout_below="@id/gallery_img"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/event"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/social"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.2">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/event_img"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_event"
+                    android:layout_centerHorizontal="true"
+                    app:tint="@color/menu_grey" />
+
+                <TextView
+                    android:id="@+id/event_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/menu_events"
+                    android:fontFamily="@font/regular"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/menu_grey"
+                    android:layout_below="@id/event_img"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/social"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.2">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/social_img"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_social"
+                    android:layout_centerHorizontal="true"
+                    app:tint="@color/menu_grey" />
+
+                <TextView
+                    android:id="@+id/social_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/regular"
+                    android:text="@string/menu_social"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/menu_grey"
+                    android:layout_below="@id/social_img"/>
+            </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:srcCompat="@drawable/ic_center_button"-->
+<!--        app:backgroundTint ="@color/colorPrimary"-->
+<!--        app:layout_anchor="@id/navigation"-->
+<!--        app:fabCradleMargin="0dp"-->
+<!--        app:fabCradleRoundedCornerRadius="0dp"/>-->
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/center_button"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="8dp">
 
-</android.support.constraint.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/center_button_img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/logo"
+        android:background="@drawable/round_logo_background"/>
+
+    <TextView
+        android:id="@+id/center_button_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/menu_social"
+        android:fontFamily="@font/regular"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/menu_grey"
+        android:layout_below="@id/center_button_img"/>
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
