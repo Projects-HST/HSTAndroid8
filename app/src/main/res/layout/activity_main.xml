@@ -4,12 +4,204 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="top"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/regular"
+            android:text="@string/ops_fullname"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:padding="10dp"
+            android:src="@drawable/ic_profile_menu" />
+
+        <ImageView
+            android:id="@+id/notification"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_toStartOf="@id/profile"
+            android:padding="10dp"
+            android:src="@drawable/ic_notification_default" />
+
+        <ImageView
+            android:id="@+id/language_change"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_toStartOf="@id/notification"
+            android:padding="10dp"
+            android:src="@drawable/ic_language" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="60dp"
+        android:background="@color/colorPrimary">
+
+        <androidx.appcompat.widget.SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/shadow_round"
+            android:clickable="true"
+            android:focusable="true"
+            app:defaultQueryHint="Search" />
+
+    </RelativeLayout>
+
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_navigation"
-        android:layout_below="@+id/activity_toolbar" />
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="60dp" />
+
+    <RelativeLayout
+        android:id="@+id/select_language_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:gravity="bottom"
+        android:visibility="gone"
+        android:elevation="20dp"
+        android:background="@color/transparent_black">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shadow_oval">
+
+            <TextView
+                android:id="@+id/select_language_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/semi_bold"
+                android:layout_marginTop="20dp"
+                android:text="@string/select_language"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <RelativeLayout
+                android:id="@+id/english"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/select_language_txt"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/img_english"
+                    android:text="A"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/regular"
+                    android:layout_alignParentStart="true"
+                    android:gravity="center"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="@string/select_english"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:layout_marginStart="90dp"
+                    android:fontFamily="@font/medium"
+                    android:gravity="center"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"/>
+
+                <ImageView
+                    android:id="@+id/img_eng_check"
+                    android:layout_width="20dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_check"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/tamil"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/english"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/img_tamil"
+                    android:text="அ"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/regular"
+                    android:layout_alignParentStart="true"
+                    android:gravity="center"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="@string/select_tamil"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:layout_marginStart="90dp"
+                    android:fontFamily="@font/medium"
+                    android:gravity="center"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"/>
+
+                <ImageView
+                    android:id="@+id/img_tamil_check"
+                    android:layout_width="20dp"
+                    android:layout_height="50dp"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_check"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"/>
+
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/tamil"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/confirm"
+                android:textAllCaps="false"
+                android:fontFamily="@font/regular"
+                android:textSize="18sp"/>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/navigation"
@@ -35,19 +227,19 @@
                     android:id="@+id/home_img"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_home"
                     android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_home"
                     app:tint="@color/menu_grey" />
 
                 <TextView
                     android:id="@+id/home_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/menu_home"
-                    android:fontFamily="@font/regular"
+                    android:layout_below="@id/home_img"
                     android:layout_centerHorizontal="true"
-                    android:textColor="@color/menu_grey"
-                    android:layout_below="@id/home_img"/>
+                    android:fontFamily="@font/regular"
+                    android:text="@string/menu_home"
+                    android:textColor="@color/menu_grey" />
 
             </RelativeLayout>
 
@@ -64,19 +256,19 @@
                     android:id="@+id/gallery_img"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_gallery"
                     android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_gallery"
                     app:tint="@color/menu_grey" />
 
                 <TextView
                     android:id="@+id/gallery_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/menu_gallery"
-                    android:fontFamily="@font/regular"
+                    android:layout_below="@id/gallery_img"
                     android:layout_centerHorizontal="true"
-                    android:textColor="@color/menu_grey"
-                    android:layout_below="@id/gallery_img"/>
+                    android:fontFamily="@font/regular"
+                    android:text="@string/menu_gallery"
+                    android:textColor="@color/menu_grey" />
 
             </RelativeLayout>
 
@@ -93,19 +285,19 @@
                     android:id="@+id/event_img"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_event"
                     android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_event"
                     app:tint="@color/menu_grey" />
 
                 <TextView
                     android:id="@+id/event_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/menu_events"
-                    android:fontFamily="@font/regular"
+                    android:layout_below="@id/event_img"
                     android:layout_centerHorizontal="true"
-                    android:textColor="@color/menu_grey"
-                    android:layout_below="@id/event_img"/>
+                    android:fontFamily="@font/regular"
+                    android:text="@string/menu_events"
+                    android:textColor="@color/menu_grey" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -121,59 +313,59 @@
                     android:id="@+id/social_img"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_social"
                     android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_social"
                     app:tint="@color/menu_grey" />
 
                 <TextView
                     android:id="@+id/social_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/social_img"
+                    android:layout_centerHorizontal="true"
                     android:fontFamily="@font/regular"
                     android:text="@string/menu_social"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="@color/menu_grey"
-                    android:layout_below="@id/social_img"/>
+                    android:textColor="@color/menu_grey" />
             </RelativeLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:srcCompat="@drawable/ic_center_button"-->
-<!--        app:backgroundTint ="@color/colorPrimary"-->
-<!--        app:layout_anchor="@id/navigation"-->
-<!--        app:fabCradleMargin="0dp"-->
-<!--        app:fabCradleRoundedCornerRadius="0dp"/>-->
+    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:srcCompat="@drawable/ic_center_button"-->
+    <!--        app:backgroundTint ="@color/colorPrimary"-->
+    <!--        app:layout_anchor="@id/navigation"-->
+    <!--        app:fabCradleMargin="0dp"-->
+    <!--        app:fabCradleRoundedCornerRadius="0dp"/>-->
 
     <RelativeLayout
+        android:id="@+id/center_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/center_button"
         android:layout_centerHorizontal="true"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="8dp">
 
 
-    <ImageView
-        android:id="@+id/center_button_img"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/logo"
-        android:background="@drawable/round_logo_background"/>
+        <ImageView
+            android:id="@+id/center_button_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_logo_background"
+            android:src="@drawable/img_logo" />
 
-    <TextView
-        android:id="@+id/center_button_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="@string/menu_social"
-        android:fontFamily="@font/regular"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/menu_grey"
-        android:layout_below="@id/center_button_img"/>
+        <TextView
+            android:id="@+id/center_button_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/center_button_img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/regular"
+            android:text="@string/menu_social"
+            android:textColor="@color/menu_grey" />
     </RelativeLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
