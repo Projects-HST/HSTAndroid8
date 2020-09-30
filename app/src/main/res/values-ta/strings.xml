@@ -1,36 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OPS</string>
+    <string name="app_name">ஓ.பி.எஸ்.</string>
 
     <!--General Strings-->
-    <string name="progress_loading">Loading…</string>
-    <string name="alert_button_ok">OK</string>
-    <string name="alert_button_cancel">Cancel</string>
-    <string name="alert_button_yes">Yes</string>
-    <string name="alert_button_no">No</string>
+    <string name="progress_loading">உருவாக்கப்படுகிறது&#8230;</string>
+    <string name="alert_button_ok">சரி</string>
+    <string name="alert_button_cancel">ரத்து செய்</string>
+    <string name="alert_button_yes">ஆம்</string>
+    <string name="alert_button_no">இல்லை</string>
     <string name="empty" />
-    <string name="error_no_net">No internet access. Please check your connection and try again.</string>
-    <string name="error_occurred">Failed to connect to the server. Please try again.</string>
-    <string name="error_entry">Entry Invalid</string>
-    <string name="empty_entry">Field cannot be empty</string>
-    <string name="mismatch_entry">Password mismatch</string>
-    <string name="error_username">Username cannot be empty</string>
-    <string name="error_password">Password cannot be empty</string>
-    <string name="drawer_open">Drawer open</string>
-    <string name="drawer_close">Drawer close</string>
+    <string name="error_no_net">இணையத்தை அணுக இயலவில்லை. உங்கள் இணைப்பை சரிப்பார்க்கவும்</string>
+    <string name="error_occurred">இணைய சேவையக சிக்கல் ஏற்பட்டுள்ளது. சிறிது நேரம் கழித்து முயற்சி செய்யவும்</string>
+    <string name="error_entry">அளித்த தகவல் தவறாக உள்ளது</string>
+    <string name="empty_entry">கட்டாயமாக நிரப்பப்பட வேண்டிய இடம்</string>
+    <string name="drawer_open">நாவிகேஷன் ட்ராயரை திறக்கவும்</string>
+    <string name="drawer_close">நாவிகேஷன் ட்ராயரை மூடவும்</string>
 
     <!--Bottom menu-->
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_events">Events</string>
-    <string name="menu_social">Social</string>
-    <string name="menu_ops">O.P.S</string>
+    <string name="menu_home">முகப்பு</string>
+    <string name="menu_gallery">கேலரி</string>
+    <string name="menu_events">நிகழ்வு</string>
+    <string name="menu_social">ஊடகம்</string>
+    <string name="menu_ops">ஓ.பி.எஸ்.</string>
 
     <!--Dashboard-->
-    <string name="ops_fullname">O. Panneerselvam</string>
-    <string name="select_language">Select Language</string>
-    <string name="select_english">English</string>
+    <string name="ops_fullname">ஓ. பன்னீர்செல்வம்</string>
+    <string name="select_language">விருப்பமான மொழியைத் தேர்வுசெய்க</string>
+    <string name="select_english">ஆங்கிலம்</string>
     <string name="select_tamil">தமிழ்</string>
-    <string name="confirm">Confirm</string>
+    <string name="confirm">உறுதி செய்க</string>
 
 </resources>
