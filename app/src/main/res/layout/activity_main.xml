@@ -76,10 +76,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="bottom"
-        android:gravity="bottom"
-        android:visibility="gone"
+        android:background="@color/transparent_black"
         android:elevation="20dp"
-        android:background="@color/transparent_black">
+        android:gravity="bottom"
+        android:visibility="gone">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -91,8 +91,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:fontFamily="@font/semi_bold"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/semi_bold"
                 android:text="@string/select_language"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -100,51 +100,51 @@
             <RelativeLayout
                 android:id="@+id/english"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="50dp"
                 android:layout_below="@id/select_language_txt"
+                android:layout_marginTop="20dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/img_english"
-                    android:text="A"
-                    android:layout_marginStart="20dp"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/regular"
                     android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/img_english"
+                    android:fontFamily="@font/regular"
                     android:gravity="center"
-                    android:layout_centerVertical="true"/>
+                    android:text="A"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:text="@string/select_english"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
                     android:layout_marginStart="90dp"
                     android:fontFamily="@font/medium"
                     android:gravity="center"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"/>
+                    android:text="@string/select_english"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
                 <ImageView
                     android:id="@+id/img_eng_check"
                     android:layout_width="20dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/ic_check"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="20dp"/>
+                    android:layout_marginEnd="20dp"
+                    android:src="@drawable/ic_check" />
 
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/tamil"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:layout_below="@id/english"
                 android:layout_marginTop="20dp"
                 android:gravity="center_vertical"
@@ -153,36 +153,36 @@
                 <TextView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/img_tamil"
-                    android:text="அ"
-                    android:layout_marginStart="20dp"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/regular"
                     android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/img_tamil"
+                    android:fontFamily="@font/regular"
                     android:gravity="center"
-                    android:layout_centerVertical="true"/>
+                    android:text="அ"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:text="@string/select_tamil"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
                     android:layout_marginStart="90dp"
                     android:fontFamily="@font/medium"
                     android:gravity="center"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"/>
+                    android:text="@string/select_tamil"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
                 <ImageView
                     android:id="@+id/img_tamil_check"
                     android:layout_width="20dp"
                     android:layout_height="50dp"
-                    android:visibility="gone"
-                    android:src="@drawable/ic_check"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="20dp"/>
+                    android:layout_marginEnd="20dp"
+                    android:src="@drawable/ic_check"
+                    android:visibility="gone"/>
 
             </RelativeLayout>
 
@@ -191,13 +191,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_below="@id/tamil"
-                android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
+                android:fontFamily="@font/regular"
                 android:text="@string/confirm"
                 android:textAllCaps="false"
-                android:fontFamily="@font/regular"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
         </RelativeLayout>
 
@@ -365,7 +365,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/regular"
-            android:text="@string/menu_social"
+            android:text="@string/menu_ops"
             android:textColor="@color/menu_grey" />
     </RelativeLayout>
 

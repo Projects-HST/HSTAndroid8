@@ -7,10 +7,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.hst.ops.R;
+import com.hst.ops.utils.LocaleHelper;
+import com.hst.ops.utils.PreferenceStorage;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -19,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RelativeLayout selectLanguageLayout, englishLayout, tamilLayout;
     private ImageView imgEnglishCheck, imgTamilCheck;
     private Button languageConfirm;
+    private Boolean englishCheck = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +75,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             opsLayout.setClickable(false);
             eventLayout.setClickable(false);
             socialLayout.setClickable(false);
+            if (PreferenceStorage.getLang(this).equalsIgnoreCase("english")) {
+                imgEnglishCheck.setVisibility(View.VISIBLE);
+                imgTamilCheck.setVisibility(View.GONE);
+                englishCheck = true;
+            } else {
+                imgTamilCheck.setVisibility(View.VISIBLE);
+                imgEnglishCheck.setVisibility(View.GONE);
+                englishCheck = false;
+            }
         }
         if (v == imgNotification) {
 
@@ -96,10 +109,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v == englishLayout) {
             imgEnglishCheck.setVisibility(View.VISIBLE);
             imgTamilCheck.setVisibility(View.GONE);
+            englishCheck = true;
         }
         if (v == tamilLayout) {
             imgTamilCheck.setVisibility(View.VISIBLE);
             imgEnglishCheck.setVisibility(View.GONE);
+            englishCheck = false;
         }
         if (v == languageConfirm) {
             selectLanguageLayout.setVisibility(View.GONE);
@@ -108,6 +123,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             opsLayout.setClickable(true);
             eventLayout.setClickable(true);
             socialLayout.setClickable(true);
+            if (englishCheck) {
+                Toast.makeText(getApplicationContext(), "App language is set to English", Toast.LENGTH_SHORT).show();
+                LocaleHelper.setLocale(MainActivity.this, "en");
+                PreferenceStorage.saveLang(this, "english");
+            } else {
+                Toast.makeText(getApplicationContext(), "மொழி தமிழுக்கு அமைக்கப்பட்டுள்ளது", Toast.LENGTH_SHORT).show();
+                LocaleHelper.setLocale(MainActivity.this, "ta");
+                PreferenceStorage.saveLang(this, "tamil");
+            }
+            recreate();
         }
     }
 

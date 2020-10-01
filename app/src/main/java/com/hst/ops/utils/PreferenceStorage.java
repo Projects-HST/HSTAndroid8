@@ -73,5 +73,26 @@ public class PreferenceStorage {
         userId = sharedPreferences.getString(OPSConstants.KEY_USER_ID, "");
         return userId;
     }
+
+
+    /*To store language*/
+    public static void saveLang(Context context, String lang) {
+        SharedPreferences sharedPreferences = android.preference.PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(OPSConstants.KEY_LANGUAGE, lang);
+        editor.apply();
+    }
+
+    public static String getLang(Context context) {
+        SharedPreferences sharedPreferences = android.preference.PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String lang;
+        lang = sharedPreferences.getString(OPSConstants.KEY_LANGUAGE, "");
+        return lang;
+    }
+    /*End*/
+
+
 }
 /*End*/
