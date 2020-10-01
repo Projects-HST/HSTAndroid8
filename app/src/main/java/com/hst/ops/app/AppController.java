@@ -46,8 +46,8 @@ public class AppController extends MultiDexApplication  {
     public com.nostra13.universalimageloader.core.ImageLoader getUniversalImageLoader() {
         if (universalImageLoader == null) {
             DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
-                    .cacheOnDisk(true).resetViewBeforeLoading(true).showImageOnLoading(R.drawable.ic_launcher_foreground)
-                    .showImageForEmptyUri(R.drawable.ic_launcher_foreground)
+                    .cacheOnDisk(true).resetViewBeforeLoading(true).showImageOnLoading(R.drawable.img_logo)
+                    .showImageForEmptyUri(R.drawable.img_logo)
                     .build();
             // Initialize ImageLoader with configuration.
             ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
@@ -66,9 +66,9 @@ public class AppController extends MultiDexApplication  {
     public DisplayImageOptions getLogoDisplayOptions() {
         if (logoDisplayOptions == null) {
             logoDisplayOptions = new DisplayImageOptions.Builder().cacheInMemory(true)
-                    .cacheOnDisk(true).resetViewBeforeLoading(true).showImageOnLoading(R.drawable.ic_launcher_foreground)
-                    .showImageForEmptyUri(R.drawable.ic_launcher_foreground)
-                    .showImageOnFail(R.drawable.ic_launcher_foreground)
+                    .cacheOnDisk(true).resetViewBeforeLoading(true).showImageOnLoading(R.drawable.img_logo)
+                    .showImageForEmptyUri(R.drawable.img_logo)
+                    .showImageOnFail(R.drawable.img_logo)
                     .build();
         }
         return logoDisplayOptions;
