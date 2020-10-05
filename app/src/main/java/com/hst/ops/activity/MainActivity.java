@@ -19,6 +19,7 @@ import com.hst.ops.R;
 import com.hst.ops.fragment.EventFragment;
 import com.hst.ops.fragment.GalleryFragment;
 import com.hst.ops.fragment.HomeFragment;
+import com.hst.ops.fragment.OPSFragment;
 import com.hst.ops.fragment.SocialFragment;
 import com.hst.ops.utils.LocaleHelper;
 import com.hst.ops.utils.PreferenceStorage;
@@ -240,9 +241,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             imgSocial.setImageResource(R.drawable.ic_social_selected);
             txtSocial.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
         }
-//        else if (position == 4) {
-//            newFragment = new MobileAppFragment();
-//        } else if (position == 5) {
+        else if (position == 4) {
+            newFragment = new OPSFragment();
+            imgHome.setImageResource(R.drawable.ic_home);
+            txtHome.setTextColor(ContextCompat.getColor(this, R.color.menu_grey));
+            imgGallery.setImageResource(R.drawable.ic_gallery);
+            txtGallery.setTextColor(ContextCompat.getColor(this, R.color.menu_grey));
+            imgEvent.setImageResource(R.drawable.ic_event);
+            txtEvent.setTextColor(ContextCompat.getColor(this, R.color.menu_grey));
+            imgSocial.setImageResource(R.drawable.ic_social);
+            txtSocial.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
+        }
+//        else if (position == 5) {
 //            newFragment = new WebDevelopmentFragment();
 //        } else if (position == 6) {
 //            newFragment = new BrandingFragment();
