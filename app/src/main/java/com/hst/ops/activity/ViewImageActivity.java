@@ -1,26 +1,35 @@
 package com.hst.ops.activity;
 
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.hst.ops.R;
+import com.hst.ops.customview.AViewFlipper;
 import com.hst.ops.helper.AlertDialogHelper;
 import com.hst.ops.helper.ProgressDialogHelper;
 import com.hst.ops.interfaces.DialogClickListener;
 import com.hst.ops.servicehelpers.ServiceHelper;
 import com.hst.ops.serviceinterfaces.IServiceListener;
 import com.hst.ops.utils.OPSConstants;
+import com.hst.ops.utils.OPSValidator;
 import com.hst.ops.utils.PreferenceStorage;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ViewImageActivity extends AppCompatActivity implements View.OnClickListener, IServiceListener, DialogClickListener {
@@ -30,6 +39,12 @@ public class ViewImageActivity extends AppCompatActivity implements View.OnClick
     private ProgressDialogHelper progressDialogHelper;
     private String meetingID;
     private TextView txtNewsfeedTitle, txtNewsDate, txtNewsfeedDescription, txtLikes, txtComments, txtShares;
+    public ImageView newsImage;
+    private ArrayList<String> imgUrl = new ArrayList<>();
+    AViewFlipper aViewFlipper;
+
+    private LinearLayout dotsLayout;
+    private TextView[] dots;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +58,10 @@ public class ViewImageActivity extends AppCompatActivity implements View.OnClick
             }
         });
 
+        aViewFlipper = findViewById(R.id.view_flipper);
+        dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
+
+        newsImage = (ImageView) findViewById(R.id.news_img);
         txtNewsfeedTitle = (TextView) findViewById(R.id.news_title);
         txtNewsDate = (TextView) findViewById(R.id.news_date);
         txtLikes = (TextView) findViewById(R.id.likes_count);
@@ -56,6 +75,48 @@ public class ViewImageActivity extends AppCompatActivity implements View.OnClick
         progressDialogHelper = new ProgressDialogHelper(this);
 
         getVideoDetail();
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        super.dispatchTouchEvent(event);
+        return gestureDetector.onTouchEvent(event);
+    }
+
+    GestureDetector.SimpleOnGestureListener simpleOnGestureListener = new GestureDetector.SimpleOnGestureListener() {
+
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+                               float velocityY) {
+
+            float sensitvity = 100;
+            if (imgUrl.size() >= 1) {
+                if ((e1.getX() - e2.getX()) > sensitvity) {
+                    SwipeLeft();
+                } else if ((e2.getX() - e1.getX()) > sensitvity) {
+                    SwipeRight();
+                }
+            }
+
+            return true;
+        }
+
+    };
+
+    GestureDetector gestureDetector = new GestureDetector(simpleOnGestureListener);
+
+
+    private void SwipeLeft() {
+        aViewFlipper.setInAnimation(this, R.anim.in_from_right);
+        aViewFlipper.showNext();
+        addBottomDots(aViewFlipper.getDisplayedChild());
+    }
+
+
+    private void SwipeRight() {
+        aViewFlipper.setInAnimation(this, R.anim.in_from_left);
+        aViewFlipper.showPrevious();
+        addBottomDots(aViewFlipper.getDisplayedChild());
     }
 
     @Override
@@ -121,6 +182,19 @@ public class ViewImageActivity extends AppCompatActivity implements View.OnClick
                     txtShares.setText(data.getJSONObject(0).getString("share_count") + " பகிர்");
                 }
                 txtNewsDate.setText(getserverdateformat(data.getJSONObject(0).getString("news_date")));
+                if (OPSValidator.checkNullString(data.getJSONObject(0).getString("nf_cover_image"))) {
+                    imgUrl.add(data.getJSONObject(0).getString("nf_cover_image"));
+                }
+                JSONArray images = response.getJSONArray("image_result");
+                if (imgUrl.size() >= 0) {
+                    for (int i = 0; i < images.length(); i++) {
+                        imgUrl.add(images.getJSONObject(i).getString("gallery_url"));
+                    }
+                    for (int a = 0; a < imgUrl.size(); a++) {
+                        setImageInFlipr(imgUrl.get(a));
+                        addBottomDots(aViewFlipper.getDisplayedChild());
+                    }
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -159,6 +233,35 @@ public class ViewImageActivity extends AppCompatActivity implements View.OnClick
             System.out.println(".....Date..." + serverFormatDate);
         }
         return serverFormatDate;
+    }
+
+    private void setImageInFlipr(String imgUrl) {
+        ImageView image = new ImageView(this);
+        Picasso.get().load(imgUrl).into(image);
+        image.setScaleType(ImageView.ScaleType.FIT_XY);
+        aViewFlipper.addView(image);
+    }
+
+    private void addBottomDots(int currentPage) {
+        dots = new TextView[imgUrl.size()];
+
+        int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
+        int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
+
+        dotsLayout.removeAllViews();
+        for (int i = 0; i < dots.length; i++) {
+            dots[i] = new TextView(this);
+            dots[i].setText(Html.fromHtml("&#8226;"));
+            dots[i].setTextSize(30);
+            dots[i].setTextColor(colorsInactive[currentPage]);
+            dotsLayout.addView(dots[i]);
+        }
+
+        if (dots.length > 0) {
+            dots[currentPage].setTextColor(colorsActive[currentPage]);
+            dots[currentPage].setTextSize(35);
+        }
+
     }
 
 }

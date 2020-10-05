@@ -36,7 +36,10 @@
     <string name="notification_nothing">Nothing here!!!</string>
     <string name="notification_check_after">Check for the notification after \nsometime</string>
 
-    <!--Notification-->
+    <!--Newsfeed-->
+    <string name="news_feed_description">Description</string>
+
+    <!--All Images-->
     <string name="all_images_title">Images</string>
 
     <!--Search-->

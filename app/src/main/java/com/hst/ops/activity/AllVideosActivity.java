@@ -107,7 +107,7 @@ public class AllVideosActivity extends AppCompatActivity implements View.OnClick
         }
 
         progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
-        String url = OPSConstants.BUILD_URL + OPSConstants.GET_ALL_IMAGES;
+        String url = OPSConstants.BUILD_URL + OPSConstants.GET_ALL_VIDEOS;
         serviceHelper.makeGetServiceCall(jsonObject.toString(), url);
     }
 

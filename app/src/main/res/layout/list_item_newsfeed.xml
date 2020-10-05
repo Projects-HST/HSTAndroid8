@@ -42,7 +42,10 @@
                 android:background="@drawable/shadow_round"
                 android:elevation="5dp"
                 android:fontFamily="@font/regular"
-                android:padding="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
                 android:text="12 AUG 2020"
                 android:textColor="@color/text"
                 android:textSize="12sp" />
@@ -88,9 +91,9 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
                 android:layout_weight="0.3"
                 android:gravity="end"
-                android:layout_marginEnd="20dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -101,8 +104,8 @@
                     android:src="@drawable/ic_heart" />
 
                 <TextView
-                    android:layout_width="wrap_content"
                     android:id="@+id/likes_count"
+                    android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"
@@ -116,8 +119,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
-                android:visibility="gone"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="25dp"
@@ -126,8 +129,8 @@
                     android:src="@drawable/ic_comment" />
 
                 <TextView
-                    android:layout_width="wrap_content"
                     android:id="@+id/comments_count"
+                    android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"
@@ -140,8 +143,8 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.3"
                 android:layout_marginStart="20dp"
+                android:layout_weight="0.3"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -151,8 +154,8 @@
                     android:src="@drawable/ic_share" />
 
                 <TextView
-                    android:layout_width="wrap_content"
                     android:id="@+id/shares_count"
+                    android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"

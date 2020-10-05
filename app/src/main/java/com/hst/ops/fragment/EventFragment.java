@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +18,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.gson.Gson;
 import com.hst.ops.R;
+import com.hst.ops.activity.LiveEventActivity;
 import com.hst.ops.activity.NewsfeedDetailActivity;
 import com.hst.ops.adapter.NewsFeedListAdapter;
 import com.hst.ops.bean.support.NewsFeed;
@@ -34,7 +36,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class EventFragment extends Fragment implements IServiceListener, DialogClickListener, NewsFeedListAdapter.OnItemClickListener {
+public class EventFragment extends Fragment implements IServiceListener, DialogClickListener, NewsFeedListAdapter.OnItemClickListener, View.OnClickListener {
 
     private static final String TAG = EventFragment.class.getName();
     private View view;
@@ -47,6 +49,7 @@ public class EventFragment extends Fragment implements IServiceListener, DialogC
     NewsFeedList newsFeedList;
     ArrayList<NewsFeed> newsFeedArrayList = new ArrayList<>();
     NewsFeedListAdapter mAdapter;
+    LinearLayout fabView;
 
     public static EventFragment newInstance(int position) {
         EventFragment frag = new EventFragment();
@@ -80,6 +83,9 @@ public class EventFragment extends Fragment implements IServiceListener, DialogC
         serviceHelper = new ServiceHelper(view.getContext());
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(view.getContext());
+
+        fabView = view.findViewById(R.id.fab_live_events);
+        fabView.setOnClickListener(this);
 
         recyclerView = view.findViewById(R.id.recycler_view);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.list_refresh);
@@ -207,5 +213,13 @@ public class EventFragment extends Fragment implements IServiceListener, DialogC
         Intent intent = new Intent(getActivity(), NewsfeedDetailActivity.class);
         intent.putExtra("meetingObj", meeting.getId());
         startActivity(intent);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == fabView) {
+            Intent intent = new Intent(getActivity(), LiveEventActivity.class);
+            startActivity(intent);
+        }
     }
 }

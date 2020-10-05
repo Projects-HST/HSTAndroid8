@@ -25,6 +25,7 @@ import com.hst.ops.activity.NewsfeedDetailActivity;
 import com.hst.ops.activity.ViewImageActivity;
 import com.hst.ops.activity.ViewVideoActivity;
 import com.hst.ops.adapter.GalleryListAdapter;
+import com.hst.ops.adapter.ImageListAdapter;
 import com.hst.ops.bean.support.Gallery;
 import com.hst.ops.bean.support.GalleryImageList;
 import com.hst.ops.bean.support.GalleryVideoList;
@@ -41,7 +42,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class GalleryFragment extends Fragment implements IServiceListener, DialogClickListener, GalleryListAdapter.OnItemClickListener, View.OnClickListener {
+public class GalleryFragment extends Fragment implements IServiceListener, DialogClickListener, GalleryListAdapter.OnItemClickListener, ImageListAdapter.OnItemClickListener, View.OnClickListener {
 
     private static final String TAG = GalleryFragment.class.getName();
     private View view;
@@ -56,7 +57,8 @@ public class GalleryFragment extends Fragment implements IServiceListener, Dialo
     GalleryVideoList galleryVideoList;
     ArrayList<Gallery> galleryArrayList = new ArrayList<>();
     ArrayList<Gallery> galleryImagesArrayList = new ArrayList<>();
-    GalleryListAdapter mAdapter, mAdapterImages;
+    GalleryListAdapter mAdapter;
+    ImageListAdapter mAdapterImages;
     private LinearLayout images, videos;
     private TextView viewMoreImages, viewMoreVideos;
 
@@ -161,6 +163,7 @@ public class GalleryFragment extends Fragment implements IServiceListener, Dialo
 
         return view;
     }
+
     private void loadmore() {
         listcount = listcount + 50;
         getNewsfeed(String.valueOf(listcount));
@@ -199,7 +202,7 @@ public class GalleryFragment extends Fragment implements IServiceListener, Dialo
 
             galleryImageList = gson.fromJson(response.toString(), GalleryImageList.class);
             galleryImagesArrayList.addAll(galleryImageList.getGalleryArrayList());
-            mAdapterImages = new GalleryListAdapter(galleryImagesArrayList, this);
+            mAdapterImages = new ImageListAdapter(galleryImagesArrayList, this);
             mLayoutManagerImages = new GridLayoutManager(getActivity(), 4);
             mLayoutManagerImages.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
@@ -286,11 +289,17 @@ public class GalleryFragment extends Fragment implements IServiceListener, Dialo
         Gallery meeting = null;
         meeting = galleryArrayList.get(position);
         Intent intent;
-        if (meeting.getProfileType().equalsIgnoreCase("I")) {
-            intent = new Intent(getActivity(), ViewImageActivity.class);
-        } else {
-            intent = new Intent(getActivity(), ViewVideoActivity.class);
-        }
+        intent = new Intent(getActivity(), ViewVideoActivity.class);
+        intent.putExtra("meetingObj", meeting.getId());
+        startActivity(intent);
+    }
+
+    @Override
+    public void onItemCClick(View view, int position) {
+        Gallery meeting = null;
+        meeting = galleryImagesArrayList.get(position);
+        Intent intent;
+        intent = new Intent(getActivity(), ViewImageActivity.class);
         intent.putExtra("meetingObj", meeting.getId());
         startActivity(intent);
     }
@@ -300,7 +309,8 @@ public class GalleryFragment extends Fragment implements IServiceListener, Dialo
         if (v == viewMoreImages) {
             Intent i = new Intent(getActivity(), AllImagesActivity.class);
             startActivity(i);
-        } if (v == viewMoreVideos) {
+        }
+        if (v == viewMoreVideos) {
             Intent i = new Intent(getActivity(), AllVideosActivity.class);
             startActivity(i);
         }

@@ -40,6 +40,9 @@ public class OPSConstants {
     //ALL VIDEOS URL
     public static final String GET_ALL_VIDEOS = "videos_all/";
 
+    //ALL VIDEOS URL
+    public static final String GET_LIVE_EVENT_LIST = "live_events/";
+
 
 
 

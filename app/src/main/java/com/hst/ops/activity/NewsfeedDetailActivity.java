@@ -200,7 +200,7 @@ public class NewsfeedDetailActivity extends AppCompatActivity implements IServic
                     imgUrl.add(data.getJSONObject(0).getString("nf_cover_image"));
                 }
                 JSONArray images = response.getJSONArray("image_result");
-                if (images.length() >= 1) {
+                if (imgUrl.size() >= 0) {
                     for (int i = 0; i < images.length(); i++) {
                         imgUrl.add(images.getJSONObject(i).getString("gallery_url"));
                     }
