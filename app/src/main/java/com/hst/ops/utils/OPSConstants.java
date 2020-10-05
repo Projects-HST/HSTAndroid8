@@ -19,8 +19,27 @@ public class OPSConstants {
     public static final String BUILD_URL = BASE_URL + JOINT_URL + "apiandroid/";
 
 
-    //CONSTITUENCY URL
+    //INTRO VIDEO URL
     public static final String GET_INTRO_VIDEO = "intro_video/";
+
+    //NEWSFEED URL
+    public static final String GET_NEWSFEED = "newsfeeds_categoryid/";
+
+    //NEWSFEED DETAILS URL
+    public static final String GET_NEWSFEED_DETAIL = "newsfeed_details/";
+
+    //SEARCH URL
+    public static final String SEARCH_NEWSFEED = "newsfeed_search/";
+
+    //GALLERY URL
+    public static final String GET_GALLERY = "gallery/";
+
+    //ALL IMAGES URL
+    public static final String GET_ALL_IMAGES = "images_all/";
+
+    //ALL VIDEOS URL
+    public static final String GET_ALL_VIDEOS = "videos_all/";
+
 
 
 
@@ -48,6 +67,13 @@ public class OPSConstants {
     public static final String KEY_LANGUAGE = "language";
 
 
+    //    Newsfeed Params
+    public static final String NEWSFEED_CATEGORY = "nf_category_id";
+    public static final String NEWSFEED_ID = "newsfeed_id";
+    public static final String KEY_OFFSET = "offset";
+    public static final String KEY_ROWCOUNT = "rowcount";
+    public static final String KEY_SEARCH_KEYWORD = "search_text";
+
 
     // Alert Dialog Constants
     public static String ALERT_DIALOG_TITLE = "alertDialogTitle";
@@ -63,6 +89,7 @@ public class OPSConstants {
     public static String KEY_VERSION = "version_code";
     public static String VERSION_VALUE = "1";
 
+    public static String SEARCH_STATUS = "search_status";
 
 
 }

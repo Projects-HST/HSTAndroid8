@@ -14,8 +14,8 @@
     <string name="error_occurred">Failed to connect to the server. Please try again.</string>
     <string name="error_entry">Entry Invalid</string>
     <string name="empty_entry">Field cannot be empty</string>
-    <string name="drawer_open">Drawer open</string>
-    <string name="drawer_close">Drawer close</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
 
     <!--Bottom menu-->
     <string name="menu_home">Home</string>
@@ -35,5 +35,17 @@
     <string name="notification_title">Notification</string>
     <string name="notification_nothing">Nothing here!!!</string>
     <string name="notification_check_after">Check for the notification after \nsometime</string>
+
+    <!--Notification-->
+    <string name="all_images_title">Images</string>
+
+    <!--Search-->
+    <string name="search_title">Search</string>
+
+    <!--Image detail-->
+    <string name="image_detail">Image Detail</string>
+
+    <!--Video detail-->
+    <string name="video_detail">Video Detail</string>
 
 </resources>

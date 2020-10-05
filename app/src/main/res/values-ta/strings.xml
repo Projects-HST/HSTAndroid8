@@ -13,8 +13,8 @@
     <string name="error_occurred">இணைய சேவையக சிக்கல் ஏற்பட்டுள்ளது. சிறிது நேரம் கழித்து முயற்சி செய்யவும்</string>
     <string name="error_entry">அளித்த தகவல் தவறாக உள்ளது</string>
     <string name="empty_entry">கட்டாயமாக நிரப்பப்பட வேண்டிய இடம்</string>
-    <string name="drawer_open">நாவிகேஷன் ட்ராயரை திறக்கவும்</string>
-    <string name="drawer_close">நாவிகேஷன் ட்ராயரை மூடவும்</string>
+    <string name="drawer_open">திறக்கவும்</string>
+    <string name="drawer_close">மூடவும்</string>
 
     <!--Bottom menu-->
     <string name="menu_home">முகப்பு</string>
@@ -26,7 +26,7 @@
     <!--Dashboard-->
     <string name="ops_fullname">ஓ. பன்னீர்செல்வம்</string>
     <string name="select_language">விருப்பமான மொழியைத் தேர்வுசெய்க</string>
-    <string name="select_english">ஆங்கிலம்</string>
+    <string name="select_english">English</string>
     <string name="select_tamil">தமிழ்</string>
     <string name="confirm">உறுதி செய்க</string>
 
@@ -34,5 +34,15 @@
     <string name="notification_title">Notification</string>
     <string name="notification_nothing">Nothing here!!!</string>
     <string name="notification_check_after">Check for the notification after \nsometime</string>
+
+    <!--Notification-->
+    <string name="all_images_title">Images</string>
+    <string name="search_title">Search</string>
+
+    <!--Image detail-->
+    <string name="image_detail">Image Detail</string>
+
+    <!--Video detail-->
+    <string name="video_detail">Video Detail</string>
 
 </resources>
