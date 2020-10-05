@@ -206,19 +206,19 @@ public class LiveEventActivity extends YouTubeBaseActivity implements YouTubePla
         if (validateResponse(response)) {
             try {
                 JSONArray data = response.getJSONArray("liveevent_result");
+                YouTubePlayerView playerView = new YouTubePlayerView(this);
 
                 for (int i = 0; i < data.length(); i++) {
 //                    YOUTUBE_VIDEO_ID = (data.getJSONObject(i).getString("live_url"));
                     YOUTUBE_VIDEO_ID = "sjF7NKW4PIk";
                     ConstraintLayout constraintLayout = new ConstraintLayout(this);
-                    YouTubePlayerView playerView = new YouTubePlayerView(this);
                     LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     layoutParams.setMargins(0,0,0,40);
                     constraintLayout.setLayoutParams(layoutParams);
                     constraintLayout.addView(playerView);
                     layout.addView(constraintLayout);
-                    playerView.initialize(GOOGLE_API_KEY, this);
                 }
+                playerView.initialize(GOOGLE_API_KEY, this);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
