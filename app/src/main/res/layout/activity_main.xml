@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="top"
-        android:background="@color/colorPrimary">
+        android:background="@drawable/graadient_background">
 
         <TextView
             android:layout_width="wrap_content"
@@ -50,9 +50,10 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="60dp"
-        android:background="@color/colorPrimary">
+        android:background="@drawable/graadient_background">
 
         <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -224,13 +225,12 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent="0.17">
 
-                <androidx.appcompat.widget.AppCompatImageView
+                <ImageView
                     android:id="@+id/home_img"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_home"
-                    app:tint="@color/menu_grey" />
+                    android:src="@drawable/ic_home" />
 
                 <TextView
                     android:id="@+id/home_title"
@@ -253,13 +253,12 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent="0.2">
 
-                <androidx.appcompat.widget.AppCompatImageView
+                <ImageView
                     android:id="@+id/gallery_img"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_gallery"
-                    app:tint="@color/menu_grey" />
+                    android:src="@drawable/ic_gallery" />
 
                 <TextView
                     android:id="@+id/gallery_title"
@@ -282,13 +281,12 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent="0.2">
 
-                <androidx.appcompat.widget.AppCompatImageView
+                <ImageView
                     android:id="@+id/event_img"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_event"
-                    app:tint="@color/menu_grey" />
+                    android:src="@drawable/ic_event" />
 
                 <TextView
                     android:id="@+id/event_title"
@@ -310,13 +308,12 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent="0.2">
 
-                <androidx.appcompat.widget.AppCompatImageView
+                <ImageView
                     android:id="@+id/social_img"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_social"
-                    app:tint="@color/menu_grey" />
+                    android:src="@drawable/ic_social"/>
 
                 <TextView
                     android:id="@+id/social_title"

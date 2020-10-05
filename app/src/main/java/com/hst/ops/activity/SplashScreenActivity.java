@@ -48,6 +48,7 @@ public class SplashScreenActivity extends Activity {
                         }
                     });
                     Intent i = new Intent(SplashScreenActivity.this, YoutubeActivity.class);
+                    PreferenceStorage.saveLang(getApplicationContext(), "english");
                     i.putExtra("page", "splash");
                     startActivity(i);
                 } else {

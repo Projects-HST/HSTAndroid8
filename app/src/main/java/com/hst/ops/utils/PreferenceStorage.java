@@ -94,5 +94,24 @@ public class PreferenceStorage {
     /*End*/
 
 
+    /*To search*/
+    public static void setSearchFor(Context context, String ser) {
+        SharedPreferences sharedPreferences = android.preference.PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(OPSConstants.SEARCH_STATUS, ser);
+        editor.apply();
+    }
+
+    public static String getSearchFor(Context context) {
+        SharedPreferences sharedPreferences = android.preference.PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String ser;
+        ser = sharedPreferences.getString(OPSConstants.SEARCH_STATUS, "");
+        return ser;
+    }
+    /*End*/
+
+
 }
 /*End*/

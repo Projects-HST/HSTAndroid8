@@ -22,6 +22,7 @@ import com.hst.ops.helper.ProgressDialogHelper;
 import com.hst.ops.servicehelpers.ServiceHelper;
 import com.hst.ops.serviceinterfaces.IServiceListener;
 import com.hst.ops.utils.OPSConstants;
+import com.hst.ops.utils.PreferenceStorage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,6 +54,8 @@ public class YoutubeActivity extends YouTubeBaseActivity implements YouTubePlaye
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
+
+        PreferenceStorage.setFirstTimeLaunch(this, false);
 
         getVideoDetail();
 
