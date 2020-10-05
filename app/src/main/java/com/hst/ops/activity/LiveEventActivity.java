@@ -1,18 +1,21 @@
 package com.hst.ops.activity;
 
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.MediaController;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -30,9 +33,7 @@ import com.hst.ops.utils.PreferenceStorage;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import org.w3c.dom.Text;
 
 public class LiveEventActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener, IServiceListener, DialogClickListener {
     private static final String TAG = "YoutubeActivity";
@@ -41,19 +42,22 @@ public class LiveEventActivity extends YouTubeBaseActivity implements YouTubePla
 
     private ServiceHelper serviceHelper;
     private ProgressDialogHelper progressDialogHelper;
-    private LinearLayout layout;
+    private LinearLayout listLayout;
+    private ConstraintLayout videoLayout;
     private RelativeLayout cancelLayout;
     private Button close;
     private TextView moreInfo;
     private String meetingID;
     private TextView txtNewsfeedTitle, txtNewsDate, txtNewsfeedDescription, txtLikes, txtComments, txtShares;
+    YouTubePlayerView playerView;
+    ScrollView vvvv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live_events);
-        layout = (LinearLayout) findViewById(R.id.constraint_layout);
-
+        listLayout = (LinearLayout) findViewById(R.id.list_layout);
+        videoLayout = (ConstraintLayout) findViewById(R.id.constraint_layout);
         findViewById(R.id.img_back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,6 +65,8 @@ public class LiveEventActivity extends YouTubeBaseActivity implements YouTubePla
             }
         });
 
+        vvvv = findViewById(R.id.vvvv);
+        cancelLayout = findViewById(R.id.cancel_layout);
         txtNewsfeedTitle = (TextView) findViewById(R.id.news_title);
         txtNewsDate = (TextView) findViewById(R.id.news_date);
         txtLikes = (TextView) findViewById(R.id.likes_count);
@@ -86,7 +92,7 @@ public class LiveEventActivity extends YouTubeBaseActivity implements YouTubePla
         youTubePlayer.setPlayerStateChangeListener(playerStateChangeListener);
 
         if (!wasRestored) {
-            youTubePlayer.cueVideo(YOUTUBE_VIDEO_ID);
+            youTubePlayer.loadVideo(YOUTUBE_VIDEO_ID);
         }
     }
 
@@ -206,19 +212,7 @@ public class LiveEventActivity extends YouTubeBaseActivity implements YouTubePla
         if (validateResponse(response)) {
             try {
                 JSONArray data = response.getJSONArray("liveevent_result");
-                YouTubePlayerView playerView = new YouTubePlayerView(this);
-
-                for (int i = 0; i < data.length(); i++) {
-//                    YOUTUBE_VIDEO_ID = (data.getJSONObject(i).getString("live_url"));
-                    YOUTUBE_VIDEO_ID = "sjF7NKW4PIk";
-                    ConstraintLayout constraintLayout = new ConstraintLayout(this);
-                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    layoutParams.setMargins(0,0,0,40);
-                    constraintLayout.setLayoutParams(layoutParams);
-                    constraintLayout.addView(playerView);
-                    layout.addView(constraintLayout);
-                }
-                playerView.initialize(GOOGLE_API_KEY, this);
+                createliveList(data);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -230,23 +224,60 @@ public class LiveEventActivity extends YouTubeBaseActivity implements YouTubePla
 
     }
 
-    private String getserverdateformat(String dd) {
-        String serverFormatDate = "";
-        if (dd != null && dd != "") {
-
-            String date = dd;
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            Date testDate = null;
+    private void createliveList(JSONArray data) {
+        for (int i = 0; i < data.length(); i++) {
             try {
-                testDate = formatter.parse(date);
-            } catch (Exception ex) {
-                ex.printStackTrace();
+
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                layoutParams.setMargins(20, 40, 20, 0);
+
+                TextView textViewTitle = new TextView(this);
+                if (PreferenceStorage.getLang(this).equalsIgnoreCase("english")) {
+                    textViewTitle.setText(data.getJSONObject(i).getString("title_en"));
+                } else {
+                    textViewTitle.setText(data.getJSONObject(i).getString("title_ta"));
+                }
+                textViewTitle.setLayoutParams(layoutParams);
+                textViewTitle.setTextSize(20.0f);
+                textViewTitle.setTextColor(ContextCompat.getColor(this, R.color.black));
+
+                LinearLayout.LayoutParams layoutParamsVutton = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//                layoutParamsVutton.setMargins(20, 20, 20, 20);
+                TextView viewVideo = new TextView(this);
+                viewVideo.setText(R.string.live_event_video_view);
+                viewVideo.setLayoutParams(layoutParamsVutton);
+                viewVideo.setGravity(Gravity.CENTER_HORIZONTAL);
+                viewVideo.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
+                viewVideo.setPadding(20, 20, 20, 20);
+                viewVideo.setTextSize(20.0f);
+                viewVideo.setTypeface(Typeface.DEFAULT_BOLD);
+                int finalI = i;
+                viewVideo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                        try {
+                            YOUTUBE_VIDEO_ID = (data.getJSONObject(finalI).getString("live_url"));
+                            showvideopopup();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+                listLayout.addView(textViewTitle);
+                listLayout.addView(viewVideo);
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-            SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
-            serverFormatDate = sdf.format(testDate);
-            System.out.println(".....Date..." + serverFormatDate);
         }
-        return serverFormatDate;
+    }
+
+    private void showvideopopup() {
+        Intent intent = new Intent(this, ViewVideoActivity.class);
+        intent.putExtra("meetingObj", YOUTUBE_VIDEO_ID);
+        intent.putExtra("page", "LiveVideo");
+        startActivity(intent);
     }
 
     @Override

@@ -18,6 +18,11 @@
     <string name="drawer_close">Close</string>
 
     <!--Bottom menu-->
+    <string name="welcome">Welcome!!</string>
+    <string name="about_ops">Know more about O. Panneerselvam APP</string>
+
+
+    <!--Bottom menu-->
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_events">Events</string>
@@ -53,6 +58,7 @@
 
     <!--Event-->
     <string name="live_event">Live Event</string>
+    <string name="live_event_video_view">View Video</string>
 
     <!--Video detail-->
     <string name="facebook">Facebook</string>
