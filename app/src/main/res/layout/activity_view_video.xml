@@ -36,13 +36,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/more_info"
-        tools:context=".activity.YoutubeActivity"/>
+        tools:context=".activity.YoutubeActivity" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="20dp"
+        android:orientation="vertical"
         android:paddingTop="10dp">
 
         <TextView
@@ -53,6 +53,7 @@
             android:layout_marginEnd="20dp"
             android:ellipsize="end"
             android:fontFamily="@font/medium"
+            android:gravity="center"
             android:maxLines="1"
             android:text=""
             android:textColor="@color/black"
@@ -67,6 +68,7 @@
             android:layout_marginEnd="10dp"
             android:ellipsize="end"
             android:fontFamily="@font/regular"
+            android:gravity="center"
             android:maxLines="2"
             android:text=""
             android:textColor="@color/text"
@@ -84,9 +86,9 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
                 android:layout_weight="0.3"
                 android:gravity="end"
-                android:layout_marginEnd="20dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -97,8 +99,8 @@
                     android:src="@drawable/ic_heart" />
 
                 <TextView
-                    android:layout_width="wrap_content"
                     android:id="@+id/likes_count"
+                    android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"
@@ -112,8 +114,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.3"
-                android:visibility="gone"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="25dp"
@@ -122,8 +124,8 @@
                     android:src="@drawable/ic_comment" />
 
                 <TextView
-                    android:layout_width="wrap_content"
                     android:id="@+id/comments_count"
+                    android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"
@@ -136,8 +138,8 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.3"
                 android:layout_marginStart="20dp"
+                android:layout_weight="0.3"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -147,8 +149,8 @@
                     android:src="@drawable/ic_share" />
 
                 <TextView
-                    android:layout_width="wrap_content"
                     android:id="@+id/shares_count"
+                    android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="10dp"

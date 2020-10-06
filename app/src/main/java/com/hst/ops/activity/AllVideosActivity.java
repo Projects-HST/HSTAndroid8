@@ -107,7 +107,7 @@ public class AllVideosActivity extends AppCompatActivity implements View.OnClick
         }
 
         progressDialogHelper.showProgressDialog(getString(R.string.progress_loading));
-        String url = OPSConstants.BUILD_URL + OPSConstants.GET_ALL_IMAGES;
+        String url = OPSConstants.BUILD_URL + OPSConstants.GET_ALL_VIDEOS;
         serviceHelper.makeGetServiceCall(jsonObject.toString(), url);
     }
 
@@ -183,6 +183,7 @@ public class AllVideosActivity extends AppCompatActivity implements View.OnClick
         meeting = galleryArrayList.get(position);
         Intent intent = new Intent(this, ViewVideoActivity.class);
         intent.putExtra("meetingObj", meeting.getId());
+        intent.putExtra("page", "AllVideo");
         startActivity(intent);
     }
 }

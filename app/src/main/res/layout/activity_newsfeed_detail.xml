@@ -23,7 +23,8 @@
                 <RelativeLayout
                     android:id="@+id/toolbar_view"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:elevation="10dp">
 
                     <ImageView
                         android:id="@+id/img_back"
@@ -193,7 +194,7 @@
                     android:fontFamily="@font/medium"
                     android:textColor="@color/black"
                     android:layout_marginStart="10dp"
-                    android:text="Description"/>
+                    android:text="@string/news_feed_description"/>
 
                 <TextView
                     android:id="@+id/news_description"

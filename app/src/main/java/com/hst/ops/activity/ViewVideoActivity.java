@@ -76,8 +76,16 @@ public class ViewVideoActivity extends YouTubeBaseActivity implements YouTubePla
         progressDialogHelper = new ProgressDialogHelper(this);
 
         meetingID = getIntent().getStringExtra("meetingObj");
-
-        getVideoDetail();
+        String page = getIntent().getStringExtra("page");
+        if (page.equalsIgnoreCase("AllVideo")) {
+            getVideoDetail();
+        } else {
+            YOUTUBE_VIDEO_ID = meetingID;
+            YouTubePlayerView playerView = new YouTubePlayerView(this);
+            playerView.setLayoutParams(new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            layout.addView(playerView);
+            playerView.initialize(GOOGLE_API_KEY, this);
+        }
 
     }
 
