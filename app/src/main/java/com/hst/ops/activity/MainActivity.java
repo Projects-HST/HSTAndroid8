@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView imgLanguage, imgNotification, imgProfile;
     private RelativeLayout homeLayout, galleryLayout, opsLayout, eventLayout, socialLayout;
     private RelativeLayout selectLanguageLayout, englishLayout, tamilLayout;
-    private ImageView imgEnglishCheck, imgTamilCheck;
+    private ImageView imgEnglishCheck, imgTamilCheck, imgOPSCenter;
     private Button languageConfirm;
     private Boolean englishCheck = true;
     private ImageView imgHome, imgGallery, imgEvent, imgSocial;
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imgGallery = findViewById(R.id.gallery_img);
         imgEvent = findViewById(R.id.event_img);
         imgSocial = findViewById(R.id.social_img);
+        imgOPSCenter = findViewById(R.id.center_button_img);
 
         txtHome = findViewById(R.id.home_title);
         txtGallery = findViewById(R.id.gallery_title);
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imgLanguage.setOnClickListener(this);
         imgNotification.setOnClickListener(this);
         imgProfile.setOnClickListener(this);
+        imgOPSCenter.setOnClickListener(this);
 
         homeLayout.setOnClickListener(this);
         galleryLayout.setOnClickListener(this);
@@ -118,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return false;
             }
         });
-        
+
     }
 
     private void makeSearch(String eventname) {
@@ -135,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             opsLayout.setClickable(false);
             eventLayout.setClickable(false);
             socialLayout.setClickable(false);
+            imgOPSCenter.setClickable(false);
             if (PreferenceStorage.getLang(this).equalsIgnoreCase("english")) {
                 imgEnglishCheck.setVisibility(View.VISIBLE);
                 imgTamilCheck.setVisibility(View.GONE);
@@ -164,6 +167,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (v == socialLayout) {
             changeFragment(3);
+        }
+        if (v == imgOPSCenter) {
+            changeFragment(4);
         }
         if (v == englishLayout) {
             imgEnglishCheck.setVisibility(View.VISIBLE);
@@ -209,8 +215,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             txtEvent.setTextColor(ContextCompat.getColor(this, R.color.menu_grey));
             imgSocial.setImageResource(R.drawable.ic_social);
             txtSocial.setTextColor(ContextCompat.getColor(this, R.color.menu_grey));
-        }
-        else if (position == 1) {
+        } else if (position == 1) {
             newFragment = new GalleryFragment();
             imgHome.setImageResource(R.drawable.ic_home);
             txtHome.setTextColor(ContextCompat.getColor(this, R.color.menu_grey));
@@ -240,9 +245,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             txtEvent.setTextColor(ContextCompat.getColor(this, R.color.menu_grey));
             imgSocial.setImageResource(R.drawable.ic_social_selected);
             txtSocial.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
-        }
-        else if (position == 4) {
-            newFragment = new OPSFragment();
+        } else if (position == 4) {
+            /*newFragment = new OPSFragment();
             imgHome.setImageResource(R.drawable.ic_home);
             txtHome.setTextColor(ContextCompat.getColor(this, R.color.menu_grey));
             imgGallery.setImageResource(R.drawable.ic_gallery);
@@ -250,7 +254,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             imgEvent.setImageResource(R.drawable.ic_event);
             txtEvent.setTextColor(ContextCompat.getColor(this, R.color.menu_grey));
             imgSocial.setImageResource(R.drawable.ic_social);
-            txtSocial.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
+            txtSocial.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));*/
+
+            Intent i = new Intent(getApplicationContext(), OPSActivity.class);
+            startActivity(i);
         }
 //        else if (position == 5) {
 //            newFragment = new WebDevelopmentFragment();
