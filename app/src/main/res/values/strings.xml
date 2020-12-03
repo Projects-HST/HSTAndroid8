@@ -18,11 +18,6 @@
     <string name="drawer_close">Close</string>
 
     <!--Bottom menu-->
-    <string name="welcome">Welcome!!</string>
-    <string name="about_ops">Know more about O. Panneerselvam APP</string>
-
-
-    <!--Bottom menu-->
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_events">Events</string>
@@ -41,10 +36,7 @@
     <string name="notification_nothing">Nothing here!!!</string>
     <string name="notification_check_after">Check for the notification after \nsometime</string>
 
-    <!--Newsfeed-->
-    <string name="news_feed_description">Description</string>
-
-    <!--All Images-->
+    <!--Notification-->
     <string name="all_images_title">Images</string>
 
     <!--Search-->
@@ -56,14 +48,6 @@
     <!--Video detail-->
     <string name="video_detail">Video Detail</string>
 
-    <!--Event-->
-    <string name="live_event">Live Event</string>
-    <string name="live_event_video_view">View Video</string>
-
-    <!--Video detail-->
-    <string name="facebook">Facebook</string>
-    <string name="twitter">Twitter</string>
-    <string name="instagram">Instagram</string>
-    <string name="linkedin">Linkedin</string>
+    <string name="about_ops">About OPS</string>
 
 </resources>

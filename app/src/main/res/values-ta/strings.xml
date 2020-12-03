@@ -17,10 +17,6 @@
     <string name="drawer_close">மூடவும்</string>
 
     <!--Bottom menu-->
-    <string name="welcome">Welcome!!</string>
-    <string name="about_ops">Know more about O. Panneerselvam APP</string>
-
-    <!--Bottom menu-->
     <string name="menu_home">முகப்பு</string>
     <string name="menu_gallery">கேலரி</string>
     <string name="menu_events">நிகழ்வு</string>
@@ -39,13 +35,8 @@
     <string name="notification_nothing">Nothing here!!!</string>
     <string name="notification_check_after">Check for the notification after \nsometime</string>
 
-    <!--Newsfeed-->
-    <string name="news_feed_description">Description</string>
-
-    <!--All Images-->
+    <!--Notification-->
     <string name="all_images_title">Images</string>
-
-    <!--Search-->
     <string name="search_title">Search</string>
 
     <!--Image detail-->
@@ -54,13 +45,6 @@
     <!--Video detail-->
     <string name="video_detail">Video Detail</string>
 
-    <!--Event-->
-    <string name="live_event">Live Event</string>
-    <string name="live_event_video_view">View Video</string>
+    <string name="about_ops">ஓ.பி.எஸ். பற்றிய தகவல்</string>
 
-    <!--Video detail-->
-    <string name="facebook">Facebook</string>
-    <string name="twitter">Twitter</string>
-    <string name="instagram">Instagram</string>
-    <string name="linkedin">Linkedin</string>
 </resources>
