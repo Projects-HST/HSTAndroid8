@@ -291,6 +291,7 @@ public class GalleryFragment extends Fragment implements IServiceListener, Dialo
         Intent intent;
         intent = new Intent(getActivity(), ViewVideoActivity.class);
         intent.putExtra("meetingObj", meeting.getId());
+        intent.putExtra("page", "img");
         startActivity(intent);
     }
 
@@ -300,7 +301,8 @@ public class GalleryFragment extends Fragment implements IServiceListener, Dialo
         meeting = galleryImagesArrayList.get(position);
         Intent intent;
         intent = new Intent(getActivity(), ViewImageActivity.class);
-        intent.putExtra("meetingObj", meeting.getId());
+        intent.putExtra("meetingObj", meeting.getVideoTokenId());
+        intent.putExtra("page", "vieod");
         startActivity(intent);
     }
 

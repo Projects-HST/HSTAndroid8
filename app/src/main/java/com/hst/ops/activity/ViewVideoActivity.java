@@ -45,12 +45,13 @@ public class ViewVideoActivity extends YouTubeBaseActivity implements YouTubePla
 
     private ServiceHelper serviceHelper;
     private ProgressDialogHelper progressDialogHelper;
-    private ConstraintLayout layout ;
+    private ConstraintLayout layout;
     private RelativeLayout cancelLayout;
     private Button close;
     private TextView moreInfo;
     private String meetingID;
     private TextView txtNewsfeedTitle, txtNewsDate, txtNewsfeedDescription, txtLikes, txtComments, txtShares;
+    private String page;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +77,7 @@ public class ViewVideoActivity extends YouTubeBaseActivity implements YouTubePla
         progressDialogHelper = new ProgressDialogHelper(this);
 
         meetingID = getIntent().getStringExtra("meetingObj");
-        String page = getIntent().getStringExtra("page");
+        page = getIntent().getStringExtra("page");
         if (page.equalsIgnoreCase("AllVideo")) {
             getVideoDetail();
         } else {
@@ -97,7 +98,7 @@ public class ViewVideoActivity extends YouTubeBaseActivity implements YouTubePla
         youTubePlayer.setPlaybackEventListener(playbackEventListener);
         youTubePlayer.setPlayerStateChangeListener(playerStateChangeListener);
 
-        if(!wasRestored){
+        if (!wasRestored) {
             youTubePlayer.cueVideo(YOUTUBE_VIDEO_ID);
         }
     }
@@ -106,9 +107,9 @@ public class ViewVideoActivity extends YouTubeBaseActivity implements YouTubePla
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
         final int REQUEST_CODE = 1;
 
-        if(youTubeInitializationResult.isUserRecoverableError()){
+        if (youTubeInitializationResult.isUserRecoverableError()) {
             youTubeInitializationResult.getErrorDialog(this, REQUEST_CODE).show();
-        } else{
+        } else {
             String errorMessage = String.format("There was an error initializing the YoutubePlayer (%1$s)", youTubeInitializationResult.toString());
             Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
         }
