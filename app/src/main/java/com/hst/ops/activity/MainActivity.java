@@ -10,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -19,10 +18,10 @@ import com.hst.ops.R;
 import com.hst.ops.fragment.EventFragment;
 import com.hst.ops.fragment.GalleryFragment;
 import com.hst.ops.fragment.HomeFragment;
-import com.hst.ops.fragment.OPSFragment;
 import com.hst.ops.fragment.SocialFragment;
 import com.hst.ops.utils.LocaleHelper;
 import com.hst.ops.utils.PreferenceStorage;
+import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -47,7 +46,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void setVariables() {
         imgLanguage = findViewById(R.id.language_change);
         imgNotification = findViewById(R.id.notification);
+
         imgProfile = findViewById(R.id.profile);
+        String url = PreferenceStorage.getUserPicture(this);
+        if (((url != null) && !(url.isEmpty()))) {
+            Picasso.get().load(url).placeholder(R.drawable.ic_default_profile).error(R.drawable.ic_default_profile).into(imgProfile);
+        }
 
         homeLayout = findViewById(R.id.home_layout);
         galleryLayout = findViewById(R.id.gallery_layout);
@@ -152,7 +156,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
         if (v == imgProfile) {
-
+            Intent profileIntent = new Intent(this, ProfileActivity.class);
+            startActivity(profileIntent);
         }
         if (v == homeLayout) {
             changeFragment(0);
@@ -161,15 +166,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             changeFragment(1);
         }
         if (v == opsLayout) {
+            Intent i = new Intent(getApplicationContext(), AboutOPS.class);
+            startActivity(i);
         }
         if (v == eventLayout) {
-            changeFragment(2);
-        }
-        if (v == socialLayout) {
             changeFragment(3);
         }
-        if (v == imgOPSCenter) {
+        if (v == socialLayout) {
             changeFragment(4);
+        }
+        if (v == imgOPSCenter) {
+            Intent i = new Intent(getApplicationContext(), AboutOPS.class);
+            startActivity(i);
         }
         if (v == englishLayout) {
             imgEnglishCheck.setVisibility(View.VISIBLE);
@@ -225,7 +233,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             txtEvent.setTextColor(ContextCompat.getColor(this, R.color.menu_grey));
             imgSocial.setImageResource(R.drawable.ic_social);
             txtSocial.setTextColor(ContextCompat.getColor(this, R.color.menu_grey));
-        } else if (position == 2) {
+        }
+//        else if (position == 2){
+//            Intent i = new Intent(getApplicationContext(), AboutOPS.class);
+//            startActivity(i);
+//        }
+        else if (position == 3) {
             newFragment = new EventFragment();
             imgHome.setImageResource(R.drawable.ic_home);
             txtHome.setTextColor(ContextCompat.getColor(this, R.color.menu_grey));
@@ -235,7 +248,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             txtEvent.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
             imgSocial.setImageResource(R.drawable.ic_social);
             txtSocial.setTextColor(ContextCompat.getColor(this, R.color.menu_grey));
-        } else if (position == 3) {
+        } else if (position == 4) {
             newFragment = new SocialFragment();
             imgHome.setImageResource(R.drawable.ic_home);
             txtHome.setTextColor(ContextCompat.getColor(this, R.color.menu_grey));
@@ -245,7 +258,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             txtEvent.setTextColor(ContextCompat.getColor(this, R.color.menu_grey));
             imgSocial.setImageResource(R.drawable.ic_social_selected);
             txtSocial.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
-        } else if (position == 4) {
+//        } else if (position == 5) {
             /*newFragment = new OPSFragment();
             imgHome.setImageResource(R.drawable.ic_home);
             txtHome.setTextColor(ContextCompat.getColor(this, R.color.menu_grey));
@@ -256,8 +269,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             imgSocial.setImageResource(R.drawable.ic_social);
             txtSocial.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));*/
 
-            Intent i = new Intent(getApplicationContext(), OPSActivity.class);
-            startActivity(i);
+//            Intent i = new Intent(getApplicationContext(), AboutOPS.class);
+//            startActivity(i);
         }
 //        else if (position == 5) {
 //            newFragment = new WebDevelopmentFragment();

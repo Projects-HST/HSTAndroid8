@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.AboutOPS">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/graadient_background"/>
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="20dp"
+            android:src="@drawable/ic_left_arrow"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            android:id="@+id/pg_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/img_back"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/regular"
+            android:text="@string/about_ops"
+            android:textSize="20sp"
+            android:textColor="@color/white" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="185dp"
+        android:background="@drawable/ops_appbar">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="185dp"
+            android:alpha="0.9"
+            android:background="@drawable/ops_gradient">
+
+            <ImageView
+                android:id="@+id/mgr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="75dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/img_mgr" />
+
+            <ImageView
+                android:id="@+id/party"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/mgr"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="63dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/img_aiadmk" />
+
+            <ImageView
+                android:id="@+id/jj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/party"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="64dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/img_jaya" />
+
+            <ImageView
+                android:id="@+id/ops"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/party"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="36dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/img_dcm" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_toEndOf="@id/ops"
+                android:layout_marginTop="105dp"
+                android:layout_marginStart="19dp"
+                android:fontFamily="@font/semi_bold"
+                android:text="O.Paneerselvam"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/designation"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:layout_below="@id/name"
+                android:layout_toEndOf="@id/ops"
+                android:layout_marginTop="2dp"
+                android:layout_marginStart="19dp"
+                android:fontFamily="@font/regular"
+                android:text="@string/txt_designation"
+                android:textColor="@color/white"
+                android:textSize="10sp"/>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_lay"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:minHeight="?android:attr/actionBarSize"
+            app:tabIndicatorColor="@color/colorPrimary"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabTextColor="@color/menu_grey"  />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    </LinearLayout>
+
+</LinearLayout>

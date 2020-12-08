@@ -39,12 +39,44 @@
     <string name="all_images_title">Images</string>
     <string name="search_title">Search</string>
 
+    <!--Profile-->
+    <string name="txt_name">Name*</string>
+    <string name="txt_ph">Phone Number*</string>
+    <string name="txt_mail">Email Id*</string>
+    <string name="txt_gen">Gender</string>
+    <string name="txt_gen_m">Male</string>
+    <string name="txt_gen_ot">Other</string>
+    <string name="txt_gen_f">Female</string>
+    <string name="save">Save</string>
+    <string name="txt_dob">Date of Birth</string>
+
     <!--Image detail-->
     <string name="image_detail">Image Detail</string>
 
     <!--Video detail-->
     <string name="video_detail">Video Detail</string>
+    <string name="live_event_video_view">Live Event</string>
 
+    <string name="prof_title">Profile Update</string>
+    <string name="news_feed_description">Title Description</string>
+    <string name="live_event">Event</string>
+    <string name="welcome">Welcome</string>
+
+    <!--Social Media-->
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="instagram">Instagram</string>
+    <string name="linkedin">LinkedIn</string>
+
+    <!--About OPS-->
     <string name="about_ops">ஓ.பி.எஸ். பற்றிய தகவல்</string>
+    <string name="txt_designation">Deputy Chief Minister of Tamil Nadu</string>
+    <string name="personal">Personal</string>
+    <string name="txt_content">Content Description</string>
+    <string name="political">Political Career</string>
+
+    <string name="txt_party">About</string>
+    <string name="achieve">Achievements</string>
+    <string name="partyName">All India Anna Dravidar Munnetra Kazhagam</string>
 
 </resources>

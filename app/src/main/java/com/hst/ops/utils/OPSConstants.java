@@ -43,7 +43,29 @@ public class OPSConstants {
     //ALL VIDEOS URL
     public static final String GET_LIVE_EVENT_LIST = "live_events/";
 
+    //PROFILE DETAILS
+    public static final String GET_PROFILE_DETAILS = "profile_details/";
 
+    //PROFILE UPDATE URL
+    public static final String GET_PROFILE_UPDATE = "profile_update/";
+
+    //PROFILE PIC UPDATE
+    public static final String PROFILE_PIC_UPDATE = "profilepic_update/";
+
+    //BIOGRAPHY URL
+    public static final String GET_BIOGRAPHY = "ops_biogrphy/";
+
+    //ACHIEVEMENTS URL
+    public static final String GET_ACHIEVEMENTS = "ops_achievements/";
+
+    //ABOUT PARTY URL
+    public static final String ABOUT_PARTY = "about_party/";
+
+    //PARTY STATE LIST
+    public static final String PARTY_STATES = "party_states/";
+
+    //ELECTION URL
+    public static final String ELECTION_LIST = "party_elections/";
 
 
     //////    Service Params    ///////
@@ -91,8 +113,15 @@ public class OPSConstants {
     public static String KEY_USER_ID = "user_id";
     public static String KEY_VERSION = "version_code";
     public static String VERSION_VALUE = "1";
-
     public static String SEARCH_STATUS = "search_status";
 
 
+    //    USER DETAILS
+
+    public static final String KEY_USER_IMAGE = "profile_pic";
+    public static final String KEY_PHONE_NO = "phone_number";
+    public static final String KEY_USER_GENDER = "gender";
+    public static final String KEY_USERNAME = "full_name";
+    public static final String KEY_USER_BIRTHDAY = "dob";
+    public static final String KEY_USER_EMAIL_ID = "email_id";
 }

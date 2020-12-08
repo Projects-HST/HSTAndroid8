@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#064A11</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="black">#000000</color>
+    <color name="text_grey">#757575</color>
     <color name="transparent_black">#2A000000</color>
     <color name="menu_grey">#9B9999</color>
     <color name="white">#FFFFFF</color>
@@ -13,6 +14,14 @@
     <color name="live_event_fab">#FF0000</color>
     <color name="active_dot">#FFFFFF</color>
     <color name="inactive_dot">#80FFFFFF</color>
+    <color name="lay_outline">#BBBBBB</color>
+    <color name="profile_txt">#2F2F31</color>
+    <color name="header_txt">#0B9421</color>
+    <color name="gradient">#0B9221</color>
+    <color name="title_black">#252525</color>
+    <color name="lite_grey">#828282</color>
+    <color name="stroke">#707070</color>
+    <color name="txt_disabled">#434343</color>
 
     <array name="array_dot_active">
         <item>@color/active_dot</item>

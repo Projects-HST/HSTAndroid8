@@ -70,43 +70,43 @@ public class SocialFragment extends Fragment {
         return view;
     }
 
-    private void initialiseTabs() {
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.facebook)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.twitter)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.instagram)));
-        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.linkedin)));
+        private void initialiseTabs() {
+            tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.facebook)));
+            tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.twitter)));
+            tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.instagram)));
+            tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.linkedin)));
 
-        final SocialMediaFragmentAdapter adapter = new SocialMediaFragmentAdapter(getChildFragmentManager());
+            final SocialMediaFragmentAdapter adapter = new SocialMediaFragmentAdapter(getChildFragmentManager());
 
-        viewPager.setAdapter(adapter);
-        tabatab = new TabLayout.TabLayoutOnPageChangeListener(tabLayout);
-        viewPager.addOnPageChangeListener(tabatab);
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-                viewPager.getCurrentItem();
+            viewPager.setAdapter(adapter);
+            tabatab = new TabLayout.TabLayoutOnPageChangeListener(tabLayout);
+            viewPager.addOnPageChangeListener(tabatab);
+            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    viewPager.setCurrentItem(tab.getPosition());
+                    viewPager.getCurrentItem();
+                }
+
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
+
+                }
+
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
+                    viewPager.setCurrentItem(tab.getPosition());
+                    viewPager.getCurrentItem();
+                }
+            });
+    //Bonus Code : If your tab layout has more than 2 tabs then tab will scroll other wise they will take whole width of the screen
+            if (tabLayout.getTabCount() <= 2) {
+                tabLayout.setTabMode(TabLayout.
+                        MODE_FIXED);
+            } else {
+                tabLayout.setTabMode(TabLayout.
+                        MODE_SCROLLABLE);
             }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-                viewPager.getCurrentItem();
-            }
-        });
-//Bonus Code : If your tab layout has more than 2 tabs then tab will scroll other wise they will take whole width of the screen
-        if (tabLayout.getTabCount() <= 2) {
-            tabLayout.setTabMode(TabLayout.
-                    MODE_FIXED);
-        } else {
-            tabLayout.setTabMode(TabLayout.
-                    MODE_SCROLLABLE);
         }
-    }
 
 }

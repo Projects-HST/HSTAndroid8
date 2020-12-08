@@ -191,7 +191,6 @@ public class EventFragment extends Fragment implements IServiceListener, DialogC
                             swipeRefreshLayout.setVisibility(View.GONE);
                         }
                         swipeRefreshLayout.setRefreshing(false);
-
                     }
                 }
             } catch (JSONException e) {
