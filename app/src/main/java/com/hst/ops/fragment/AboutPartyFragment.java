@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Html;
@@ -223,6 +224,9 @@ public class AboutPartyFragment extends Fragment implements View.OnClickListener
                         stateArrayList.add(new PartyStateList(id,logo,name));
                     }
                     stateAdapter = new PartyStateAdapter(getActivity(), stateArrayList);
+                    mlayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL,false);
+                    stateList.setLayoutManager(mlayoutManager);
+                    stateList.setAdapter(stateAdapter);
                 }
             }
 

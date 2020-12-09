@@ -67,9 +67,21 @@ public class OPSConstants {
     //ELECTION URL
     public static final String ELECTION_LIST = "party_elections/";
 
+    //OTP URL
+    public static final String GENERATE_OTP = "generate_otp/";
+    public static final String RESEND_OTP ="resend_otp/";
+
+    //LOGIN URL
+    public static final String LOGIN ="login/";
+
 
     //////    Service Params    ///////
 
+    // Login Parameters
+    public static String PHONE_NUMBER = "mobile_number";
+    public static String OTP = "otp";
+    public static String DEVICE_TOKEN = "device_token";
+    public static String MOBILE_TYPE = "device_type";
 
     public static String PARAM_MESSAGE = "msg";
     public static String PARAM_MESSAGE_ENG = "msg_en";
@@ -85,7 +97,7 @@ public class OPSConstants {
     public static final String KEY_IMEI = "imei_code";
 
     //    Shared Phone No
-    public static final String KEY_MOBILE_NUMBER = "mobile_no";
+    public static final String KEY_MOBILE_NUMBER = "mobile_number";
     public static final String KEY_ADMIN_MOBILE_NUMBER = "mobile_no";
 
     //    Shared Lang

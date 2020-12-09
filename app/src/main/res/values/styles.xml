@@ -17,5 +17,10 @@
         <item name="android:colorBackground">@color/black</item>
     </style>
 
+    <style name="TextInputLayoutTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <item name="colorPrimary">@color/stroke</item>
+    </style>
+
+
 
 </resources>

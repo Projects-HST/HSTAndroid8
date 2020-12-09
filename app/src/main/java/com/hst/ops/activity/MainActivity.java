@@ -156,8 +156,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
         if (v == imgProfile) {
-            Intent profileIntent = new Intent(this, ProfileActivity.class);
-            startActivity(profileIntent);
+            Intent logIntent = new Intent(this, LoginActivity.class);
+            startActivity(logIntent);
         }
         if (v == homeLayout) {
             changeFragment(0);

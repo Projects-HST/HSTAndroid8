@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">OPS</string>
+    <string name="mobile_number">Mobile Number</string>
 
     <!--General Strings-->
     <string name="progress_loading">Loading…</string>
@@ -16,6 +17,8 @@
     <string name="empty_entry">Field cannot be empty</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+    <string name="mobile_number_tag">: \n</string>
+    <string name="error_number">Enter vaild phone number</string>
 
     <!--Bottom menu-->
     <string name="menu_home">Home</string>
@@ -81,5 +84,30 @@
     <string name="txt_party">About</string>
     <string name="achieve">Achievements</string>
     <string name="partyName">All India Anna Dravidar Munnetra Kazhagam</string>
+
+    <!--Login-->
+    <string name="log">Login</string>
+    <string name="log_welcome">Welcome to O.Panneerselvam App</string>
+    <string name="log_num">Enter Your Mobile Number</string>
+    <string name="login">Login</string>
+
+    <!--OTP Verification-->
+    <string name="otp">Mobile Verification</string>
+    <string name="verify_title">Verify Phone Number</string>
+    <string name="verify_content">Please enter the 4 digit SMS verification number we sent to your mobile phone</string>
+    <string name="resend">Didn\t Recieve OTP ?</string>
+    <string name="resend_otp">Resend OTP?</string>
+    <string name="re_Send">Resend Code</string>
+    <string name="verify">Verify Now</string>
+
+
+    <string name="user_pg_title">User Profile</string>
+    <string name="user_name">UserName</string>
+    <string name="set_title_1">Edit Profile</string>
+    <string name="set_title_2">Change Language</string>
+    <string name="set_title_3">Notification</string>
+    <string name="set_title_4">Share this app</string>
+    <string name="set_title_5">Rate this app</string>
+    <string name="logOut">Logout</string>
 
 </resources>

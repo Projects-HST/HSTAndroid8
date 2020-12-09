@@ -268,7 +268,7 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
             JSONObject jsonObject = new JSONObject();
 
             try {
-                jsonObject.put(OPSConstants.KEY_USER_ID, "1");
+                jsonObject.put(OPSConstants.KEY_USER_ID, "");
                 jsonObject.put(OPSConstants.KEY_USERNAME, fullName);
                 jsonObject.put(OPSConstants.KEY_PHONE_NO, ph_no);
                 jsonObject.put(OPSConstants.KEY_USER_EMAIL_ID, mailId);

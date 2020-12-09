@@ -198,6 +198,22 @@ public class PreferenceStorage {
         return fullName;
     }
 
+    public static void saveMobile_no(Context context, String type) {
+        SharedPreferences sharedPreferences = android.preference.PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(OPSConstants.PHONE_NUMBER, type);
+        editor.apply();
+    }
+
+    public static String getMobile_no(Context context) {
+        SharedPreferences sharedPreferences = android.preference.PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String fullName;
+        fullName = sharedPreferences.getString(OPSConstants.PHONE_NUMBER, "");
+        return fullName;
+    }
+
     /*To store user gender*/
     public static void saveUserGender(Context context, String data) {
         SharedPreferences sharedPreferences = android.preference.PreferenceManager

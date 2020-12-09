@@ -22,6 +22,10 @@
     <color name="lite_grey">#828282</color>
     <color name="stroke">#707070</color>
     <color name="txt_disabled">#434343</color>
+    <color name="otp_cont">#070707</color>
+    <color name="otp_box_bg">#F9F9F9</color>
+    <color name="otp_box_stroke">#D4D4D4</color>
+    <color name="btn_log">#E61919</color>
 
     <array name="array_dot_active">
         <item>@color/active_dot</item>
