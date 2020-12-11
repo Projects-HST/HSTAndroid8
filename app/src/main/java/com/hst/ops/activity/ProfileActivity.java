@@ -268,7 +268,7 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
             JSONObject jsonObject = new JSONObject();
 
             try {
-                jsonObject.put(OPSConstants.KEY_USER_ID, "");
+                jsonObject.put(OPSConstants.KEY_USER_ID, "1");
                 jsonObject.put(OPSConstants.KEY_USERNAME, fullName);
                 jsonObject.put(OPSConstants.KEY_PHONE_NO, ph_no);
                 jsonObject.put(OPSConstants.KEY_USER_EMAIL_ID, mailId);
@@ -726,7 +726,7 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
                     Log.d(TAG, response.toString());
                     Toast.makeText(getApplicationContext(), response.getString("msg"), Toast.LENGTH_SHORT).show();
 
-                    Intent saveIntent = new Intent(this, MainActivity.class);
+                    Intent saveIntent = new Intent(this, UserProfileActivity.class);
                     saveIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP |
                             Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(saveIntent);

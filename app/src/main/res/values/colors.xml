@@ -26,6 +26,9 @@
     <color name="otp_box_bg">#F9F9F9</color>
     <color name="otp_box_stroke">#D4D4D4</color>
     <color name="btn_log">#E61919</color>
+    <color name="tableBg">#DCF2CF</color>
+    <color name="table_txt">#050505</color>
+    <color name="table_border">#AFAFAF</color>
 
     <array name="array_dot_active">
         <item>@color/active_dot</item>

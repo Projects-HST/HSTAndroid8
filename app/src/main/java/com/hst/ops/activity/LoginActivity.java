@@ -221,7 +221,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 Log.d(TAG, response.toString());
             }
-            Intent otpIntent = new Intent(this, UserProfileActivity.class);
+            Intent otpIntent = new Intent(this, OTPActivity.class);
             startActivity(otpIntent);
 
         } catch (Exception e) {

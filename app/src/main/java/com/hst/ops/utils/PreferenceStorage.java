@@ -92,7 +92,23 @@ public class PreferenceStorage {
         return lang;
     }
     /*End*/
+    /*To store language*/
+    public static void saveLanguageId(Context context, String lang) {
+        SharedPreferences sharedPreferences = android.preference.PreferenceManager
+                .getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(OPSConstants.KEY_LANG_ID, lang);
+        editor.apply();
+    }
 
+    public static String getLanguageId(Context context) {
+        SharedPreferences sharedPreferences = android.preference.PreferenceManager
+                .getDefaultSharedPreferences(context);
+        String lang;
+        lang = sharedPreferences.getString(OPSConstants.KEY_LANG_ID, "");
+        return lang;
+    }
+    /*End*/
 
     /*To search*/
     public static void setSearchFor(Context context, String ser) {

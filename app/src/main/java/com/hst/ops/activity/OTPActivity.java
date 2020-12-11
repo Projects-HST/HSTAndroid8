@@ -32,6 +32,7 @@ import com.hst.ops.bean.support.database.SQLiteHelper;
 import com.hst.ops.customview.CustomOtpEditText;
 import com.hst.ops.helper.AlertDialogHelper;
 import com.hst.ops.helper.ProgressDialogHelper;
+import com.hst.ops.interfaces.DialogClickListener;
 import com.hst.ops.servicehelpers.ServiceHelper;
 import com.hst.ops.serviceinterfaces.IServiceListener;
 import com.hst.ops.utils.CommonUtils;
@@ -46,7 +47,7 @@ import java.util.regex.Pattern;
 
 import static android.util.Log.d;
 
-public class OTPActivity extends AppCompatActivity implements View.OnClickListener, IServiceListener {
+public class OTPActivity extends AppCompatActivity implements View.OnClickListener, IServiceListener, DialogClickListener {
 
     private static final String TAG = OTPActivity.class.getName();
 
@@ -179,7 +180,7 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
 
                             }
                         });
-                alertDialogBuilder.setNegativeButton(R.string.alert_button_cancel, new DialogInterface.OnClickListener() {
+                    alertDialogBuilder.setNegativeButton(R.string.alert_button_cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -224,25 +225,16 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
         if ((response != null)) {
             try {
                 String status = response.getString("status");
-//                String msg = response.getString(SkilExConstants.PARAM_MESSAGE);
-                String msg_en = response.getString(OPSConstants.PARAM_MESSAGE_ENG);
-                String msg_ta = response.getString(OPSConstants.PARAM_MESSAGE_TAMIL);
-                d(TAG, "status val" + status + "msg" + msg_en);
+                String msg = response.getString(OPSConstants.PARAM_MESSAGE);
+                d(TAG, "status val" + status + "msg" + msg);
 
                 if ((status != null)) {
-                    if (((status.equalsIgnoreCase("activationError")) || (status.equalsIgnoreCase("alreadyRegistered")) ||
-                            (status.equalsIgnoreCase("notRegistered")) || (status.equalsIgnoreCase("error")))) {
-                        signInSuccess = false;
-                        d(TAG, "Show error dialog");
-
-                        if (PreferenceStorage.getLang(this).equalsIgnoreCase("tamil")) {
-                            AlertDialogHelper.showSimpleAlertDialog(this, msg_ta);
-                        } else {
-                            AlertDialogHelper.showSimpleAlertDialog(this, msg_en);
-                        }
-
-                    } else {
+                    if (status.equalsIgnoreCase("success")) {
                         signInSuccess = true;
+                    } else {
+                        signInSuccess = false;
+                        Log.d(TAG, "Show error dialog");
+                        AlertDialogHelper.showSimpleAlertDialog(this, msg);
                     }
                 }
             } catch (JSONException e) {
@@ -255,10 +247,51 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onResponse(JSONObject response) {
 
+
+        progressDialogHelper.hideProgressDialog();
+        if (validateResponse(response)) {
+            try {
+                if (checkVerify.equalsIgnoreCase("Resend")) {
+
+                    Toast.makeText(getApplicationContext(), "OTP resent successfully", Toast.LENGTH_SHORT).show();
+                }
+                else if (checkVerify.equalsIgnoreCase("Confirm") || checkVerify.equalsIgnoreCase("verified")) {
+                    PreferenceStorage.setFirstTimeLaunch(getApplicationContext(), false);
+                    database.app_info_check_insert("Y");
+                    Log.d(TAG, response.toString());
+                    JSONObject data = response.getJSONObject("userData");
+
+                    String userId = data.getString("user_id");
+                    String fullName = data.getString("full_name");
+                    String phoneNo = data.getString("phone_number");
+                    String language = data.getString("language_id");
+                    String profilePic = data.getString("profile_pic");
+
+                    PreferenceStorage.saveUserId(getApplicationContext(), userId);
+                    PreferenceStorage.savePhoneNumber(getApplicationContext(), phoneNo);
+                    PreferenceStorage.saveUserName(getApplicationContext(), fullName);
+                    PreferenceStorage.saveUserPicture(getApplicationContext(), profilePic);
+                    PreferenceStorage.saveLanguageId(getApplicationContext(), language);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Intent profileIntent = new Intent(this, ProfileActivity.class);
+            startActivity(profileIntent);
+        }
+    }
+    @Override
+    public void onError(String error) {
+
     }
 
     @Override
-    public void onError(String error) {
+    public void onAlertPositiveClicked(int tag) {
+
+    }
+
+    @Override
+    public void onAlertNegativeClicked(int tag) {
 
     }
 

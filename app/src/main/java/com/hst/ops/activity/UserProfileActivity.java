@@ -29,7 +29,7 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
-        profileImage = (ImageView)findViewById(R.id.img_profile);
+        profileImage = (ImageView)findViewById(R.id.profileImage);
         profileName = (TextView)findViewById(R.id.userName);
         profileClick = (ImageView)findViewById(R.id.proClick);
         langClick = (ImageView)findViewById(R.id.langClick);
@@ -54,7 +54,6 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         if (((nameUrl != null) && (nameUrl.isEmpty()))){
             profileName.setText(nameUrl);
         }
-
     }
 
     @Override

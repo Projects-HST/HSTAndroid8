@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.StateDetailActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolBarLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tool"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/graadient_background"
+            android:minHeight="?android:attr/actionBarSize" />
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="20dp"
+            android:src="@drawable/ic_left_arrow" />
+
+        <TextView
+            android:id="@+id/st_na"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toEndOf="@id/img_back"
+            android:fontFamily="@font/medium"
+            android:maxLength="10"
+            android:text="@string/txt_content"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/logosLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/tn_logo"
+            android:layout_width="115dp"
+            android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="30dp"
+            android:src="@drawable/img_aiadmk" />
+
+        <ImageView
+            android:id="@+id/pty_logo"
+            android:layout_width="115dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="30dp"
+            android:src="@drawable/ic_tn_logo" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pty_logo"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/stAs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medium"
+                android:text="@string/st_assembly"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginHorizontal="20dp"
+                android:background="@color/table_border"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/st_eleYear"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="1dp"
+                    android:layout_marginVertical="1dp"
+                    android:layout_weight="0.5"
+                    android:background="@color/tableBg"
+                    android:fontFamily="@font/medium"
+                    android:gravity="center"
+                    android:text="@string/yr"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/st_partyLeader"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="0.5"
+                    android:background="@color/tableBg"
+                    android:fontFamily="@font/medium"
+                    android:gravity="center"
+                    android:text="@string/yr"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/st_result"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/medium"
+                    android:background="@color/tableBg"
+                    android:gravity="center"
+                    android:text="@string/yr"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/st_eleList"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
+                android:layout_height="150dp" />
+
+            <TextView
+                android:id="@+id/ntAs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/medium"
+                android:gravity="center"
+                android:text="@string/nt_assembly"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/table_border"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/nt_eleYear"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="1dp"
+                    android:layout_marginVertical="1dp"
+                    android:layout_weight="0.5"
+                    android:background="@color/tableBg"
+                    android:fontFamily="@font/medium"
+                    android:gravity="center"
+                    android:text="@string/yr"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/nt_partyLeader"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginVertical="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="0.5"
+                    android:background="@color/tableBg"
+                    android:fontFamily="@font/medium"
+                    android:gravity="center"
+                    android:text="@string/yr"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/nt_result"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginVertical="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_weight="0.5"
+                    android:background="@color/tableBg"
+                    android:fontFamily="@font/medium"
+                    android:gravity="center"
+                    android:text="@string/yr"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/nt_eleList"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginHorizontal="20dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

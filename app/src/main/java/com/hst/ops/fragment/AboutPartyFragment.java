@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.hst.ops.R;
 import com.hst.ops.activity.AboutOPS;
+import com.hst.ops.activity.StateDetailActivity;
 import com.hst.ops.activity.ViewVideoActivity;
 import com.hst.ops.adapter.PartyStateAdapter;
 import com.hst.ops.bean.support.Gallery;
@@ -161,6 +162,7 @@ public class AboutPartyFragment extends Fragment implements View.OnClickListener
             party_achievement.setTextColor(getResources().getColor(R.color.white));
             abt_party.setTextColor(getResources().getColor(R.color.txt_disabled));
             abt_party.setBackground(getResources().getDrawable(R.drawable.bt_disabled));
+            stateArrayList.clear();
             getPartyStateList();
         }
     }
@@ -217,19 +219,18 @@ public class AboutPartyFragment extends Fragment implements View.OnClickListener
                     String name = "";
 
                     for (int i=0; i<getLength; i++){
-                        id = object.getString("state_id");
-                        logo = object.getString("state_logo");
-                        name = object.getString("state_name_en");
+                        id = stateArray.getJSONObject(i).getString("state_id");
+                        name = stateArray.getJSONObject(i).getString("state_name_en");
+                        logo = stateArray.getJSONObject(i).getString("state_logo");
 
-                        stateArrayList.add(new PartyStateList(id,logo,name));
+                        stateArrayList.add(new PartyStateList(id,name,logo));
                     }
-                    stateAdapter = new PartyStateAdapter(getActivity(), stateArrayList);
+                    stateAdapter = new PartyStateAdapter(stateArrayList, this);
                     mlayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL,false);
                     stateList.setLayoutManager(mlayoutManager);
                     stateList.setAdapter(stateAdapter);
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -245,9 +246,9 @@ public class AboutPartyFragment extends Fragment implements View.OnClickListener
         PartyStateList partyStateList = null;
         partyStateList = stateArrayList.get(position);
         Intent intent;
-        intent = new Intent(getActivity(), ViewVideoActivity.class);
-        intent.putExtra("meetingObj", partyStateList.getState_id());
-        intent.putExtra("page", "img");
+        intent = new Intent(getActivity(), StateDetailActivity.class);
+        intent.putExtra("stateId", partyStateList.getState_id());
+        intent.putExtra("page", "list");
         startActivity(intent);
     }
 }

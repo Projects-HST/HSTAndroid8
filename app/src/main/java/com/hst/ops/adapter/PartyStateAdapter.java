@@ -24,17 +24,19 @@ import java.util.ArrayList;
 public class PartyStateAdapter extends RecyclerView.Adapter<PartyStateAdapter.MyViewHolder> {
 
     private ArrayList<PartyStateList> stateList;
-    Context context;
     private OnItemClickListener onItemClickListener;
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        ImageView stateLogo;
-        TextView stateName;
+        public ImageView stateLogo;
+        public TextView stateName;
+        public LinearLayout stateListLayout;
 
         public MyViewHolder(View view) {
             super(view);
+            stateListLayout = (LinearLayout)view.findViewById(R.id.stList);
+            stateListLayout.setOnClickListener(this);
             stateLogo = (ImageView) view.findViewById(R.id.st_logo);
             stateName = (TextView) view.findViewById(R.id.st_name);
         }
@@ -51,9 +53,9 @@ public class PartyStateAdapter extends RecyclerView.Adapter<PartyStateAdapter.My
         }
     }
 
-    public PartyStateAdapter(Context ctx, ArrayList<PartyStateList> arrayList){
+    public PartyStateAdapter(ArrayList<PartyStateList> arrayList, OnItemClickListener onItemClickListener){
 
-        this.context = ctx;
+        this.onItemClickListener = onItemClickListener;
         this.stateList = arrayList;
     }
 

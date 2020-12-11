@@ -82,6 +82,10 @@
     <string name="achieve">Achievements</string>
     <string name="partyName">All India Anna Dravidar Munnetra Kazhagam</string>
 
+    <string name="st_assembly">Legislative Assembly Election</string>
+    <string name="yr">Election Year</string>
+    <string name="nt_assembly">Indian General Election</string>
+
     <!--Login-->
     <string name="log">Login</string>
     <string name="log_welcome">Welcome to O.Panneerselvam App</string>
@@ -92,7 +96,7 @@
     <string name="otp">Mobile Verification</string>
     <string name="verify_title">Verify Phone Number</string>
     <string name="verify_content">Please enter the 4 digit SMS verification number we sent to your mobile phone</string>
-    <string name="resend">Didn\'t Recieve OTP ?</string>
+    <string name="resend">Didn\'<t></t> Receive OTP ?</string>
     <string name="resend_otp">Resend OTP?</string>
     <string name="re_Send">Resend Code</string>
     <string name="verify">Verify Now</string>

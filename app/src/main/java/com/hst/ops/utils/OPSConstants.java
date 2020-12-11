@@ -102,6 +102,7 @@ public class OPSConstants {
 
     //    Shared Lang
     public static final String KEY_LANGUAGE = "language";
+    public static final String KEY_LANG_ID = "language_id";
 
 
     //    Newsfeed Params
@@ -110,6 +111,9 @@ public class OPSConstants {
     public static final String KEY_OFFSET = "offset";
     public static final String KEY_ROWCOUNT = "rowcount";
     public static final String KEY_SEARCH_KEYWORD = "search_text";
+
+    // State Election Result
+    public static final String STATE_ID = "state_id";
 
 
     // Alert Dialog Constants
@@ -130,7 +134,7 @@ public class OPSConstants {
 
     //    USER DETAILS
 
-    public static final String KEY_USER_IMAGE = "profile_pic";
+    public static final String KEY_USER_IMAGE = "user_pic";
     public static final String KEY_PHONE_NO = "phone_number";
     public static final String KEY_USER_GENDER = "gender";
     public static final String KEY_USERNAME = "full_name";
