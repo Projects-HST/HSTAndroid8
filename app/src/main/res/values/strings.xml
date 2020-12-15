@@ -73,6 +73,10 @@
     <string name="twitter">Twitter</string>
     <string name="instagram">Instagram</string>
     <string name="linkedin">LinkedIn</string>
+    <string name="sharechat">ShareChat</string>
+    <string name="dailyhunt">DailyHunt</string>
+    <string name="youtube">YouTube</string>
+
 
     <!--About OPS-->
     <string name="about_ops">About O.P.S</string>
@@ -98,7 +102,7 @@
     <!--OTP Verification-->
     <string name="otp">Mobile Verification</string>
     <string name="verify_title">Verify Phone Number</string>
-    <string name="verify_content">Please enter the 4 digit SMS verification number we sent to your mobile phone</string>
+    <string name="verify_content">Please enter the 4 digit SMS \n verification number we sent to \n your mobile phone</string>
     <string name="resend">Didn\'t Recieve OTP ?</string>
     <string name="resend_otp">Resend OTP?</string>
     <string name="re_Send">Resend Code</string>

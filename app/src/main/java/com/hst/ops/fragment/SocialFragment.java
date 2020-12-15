@@ -75,6 +75,9 @@ public class SocialFragment extends Fragment {
             tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.twitter)));
             tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.instagram)));
             tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.linkedin)));
+            tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.youtube)));
+            tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.sharechat)));
+            tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.dailyhunt)));
 
             final SocialMediaFragmentAdapter adapter = new SocialMediaFragmentAdapter(getChildFragmentManager());
 
