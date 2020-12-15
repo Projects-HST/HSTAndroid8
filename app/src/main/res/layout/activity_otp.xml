@@ -73,6 +73,16 @@
             android:textColor="@color/black"
             app:otp="" />
 
+        <TextView
+            android:id="@+id/tvCountdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

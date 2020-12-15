@@ -207,7 +207,7 @@
         android:layout_margin="30dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/button_round_app_colour"
-        android:inputType="textCapCharacters"
+        android:textAllCaps="false"
         android:fontFamily="@font/regular"
         android:text="@string/save"
         android:textColor="@color/white"

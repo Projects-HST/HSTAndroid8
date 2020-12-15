@@ -74,8 +74,12 @@ public class OPSConstants {
     //LOGIN URL
     public static final String LOGIN ="login/";
 
+    //SUBSCRIPTION
+    public static final String SUBSCRIPTION_UPDATE = "subscription_update/";
+
 
     //////    Service Params    ///////
+    public static final String KEY_STATUS = "status";
 
     // Login Parameters
     public static String PHONE_NUMBER = "mobile_number";
@@ -125,7 +129,6 @@ public class OPSConstants {
 
 
     //    USER DATA
-
     public static String KEY_USER_ID = "user_id";
     public static String KEY_VERSION = "version_code";
     public static String VERSION_VALUE = "1";
@@ -133,7 +136,6 @@ public class OPSConstants {
 
 
     //    USER DETAILS
-
     public static final String KEY_USER_IMAGE = "user_pic";
     public static final String KEY_PHONE_NO = "phone_number";
     public static final String KEY_USER_GENDER = "gender";

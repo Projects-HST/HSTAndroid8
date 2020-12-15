@@ -232,7 +232,7 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
     private void saveProfileData(){
 
         resString = "saveProfile";
-
+        String userId = PreferenceStorage.getUserId(this);
         fullName = prof_name.getText().toString().trim();
         PreferenceStorage.saveUserName(this, fullName);
         ph_no = prof_phone.getText().toString().trim();
@@ -268,7 +268,7 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
             JSONObject jsonObject = new JSONObject();
 
             try {
-                jsonObject.put(OPSConstants.KEY_USER_ID, "1");
+                jsonObject.put(OPSConstants.KEY_USER_ID, userId);
                 jsonObject.put(OPSConstants.KEY_USERNAME, fullName);
                 jsonObject.put(OPSConstants.KEY_PHONE_NO, ph_no);
                 jsonObject.put(OPSConstants.KEY_USER_EMAIL_ID, mailId);
@@ -285,13 +285,13 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
     private void showUserDetails(){
 
         resString = "userDetails";
-
+        String userId = PreferenceStorage.getUserId(this);
         if (CommonUtils.isNetworkAvailable(getApplicationContext())) {
 
             JSONObject jsonObject = new JSONObject();
 
             try {
-                jsonObject.put(OPSConstants.KEY_USER_ID, "1");
+                jsonObject.put(OPSConstants.KEY_USER_ID, userId);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

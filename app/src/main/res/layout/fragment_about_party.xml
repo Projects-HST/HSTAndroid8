@@ -15,48 +15,43 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:id="@+id/tab_lay"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bt_disabled"
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/abt_party"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_weight="0.5"
+                    android:background="@drawable/bt_enabled"
+                    android:fontFamily="@font/regular"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/txt_party"
+                    android:textAllCaps="false"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"/>
 
-                    <TextView
-                        android:id="@+id/abt_party"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_weight="0.5"
-                        android:background="@drawable/btn_highlighter"
-                        android:gravity="center"
-                        android:fontFamily="@font/regular"
-                        android:textAllCaps="false"
-                        android:text="@string/txt_party"
-                        android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/achievements"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/regular"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="@string/achieve"
+                    android:textAllCaps="false"
+                    android:textSize="14sp" />
 
-                    <TextView
-                        android:id="@+id/achievements"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_weight="0.5"
-                        android:background="@drawable/btn_highlighter"
-                        android:fontFamily="@font/regular"
-                        android:gravity="center"
-                        android:textAllCaps="false"
-                        android:text="@string/achieve"
-                        android:textSize="14sp" />
-
-
-                </LinearLayout>
-
-            </RelativeLayout>
+            </LinearLayout>
 
             <RelativeLayout
                 android:id="@+id/partyLayout"
@@ -67,10 +62,10 @@
                     android:id="@+id/party"
                     android:layout_width="match_parent"
                     android:layout_height="21dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="20dp"
-                    android:gravity="center|start"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/medium"
+                    android:gravity="center|start"
                     android:text="@string/partyName"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
@@ -86,7 +81,7 @@
                     android:fontFamily="@font/regular"
                     android:text="@string/txt_content"
                     android:textColor="@color/text_grey"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
 
             </RelativeLayout>
 
@@ -99,8 +94,8 @@
                     android:id="@+id/st_party_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:dividerHeight="6dp"
-                    android:divider="@color/transparent_black"/>
+                    android:divider="@color/transparent_black"
+                    android:dividerHeight="6dp" />
 
             </RelativeLayout>
 

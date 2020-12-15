@@ -156,11 +156,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
         if (v == imgProfile) {
-//            Intent logIntent = new Intent(this, LoginActivity.class);
-//            startActivity(logIntent);
-            Intent logIntent = new Intent(this, ProfileActivity.class);
-            startActivity(logIntent);
-
+            if (PreferenceStorage.getUserId(this).equalsIgnoreCase("")) {
+                Intent logIntent = new Intent(this, LoginActivity.class);
+                startActivity(logIntent);
+            } else {
+                Intent logIntent = new Intent(this, UserProfileActivity.class);
+                startActivity(logIntent);
+            }
         }
         if (v == homeLayout) {
             changeFragment(0);
@@ -210,6 +212,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             recreate();
         }
+
     }
 
     private void changeFragment(int position) {

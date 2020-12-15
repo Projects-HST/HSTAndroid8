@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
 
     <style name="datePickerTheme" parent="Theme.AppCompat.Light.Dialog">
@@ -18,7 +19,7 @@
     </style>
 
     <style name="TextInputLayoutTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
-        <item name="colorPrimary">@color/stroke</item>
+        <item name="colorPrimary">@color/text_grey</item>
     </style>
 
 

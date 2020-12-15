@@ -79,7 +79,7 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
         otpEditText = (CustomOtpEditText) findViewById(R.id.otp_view);
         tvResendOTP = (TextView) findViewById(R.id.tryAgain);
         tvResendOTP.setOnClickListener(this);
-        tvCountDown = findViewById(R.id.contResend);
+        tvCountDown = findViewById(R.id.tvCountdown);
         btnConfirm = (Button) findViewById(R.id.verify);
         btnConfirm.setOnClickListener(this);
 

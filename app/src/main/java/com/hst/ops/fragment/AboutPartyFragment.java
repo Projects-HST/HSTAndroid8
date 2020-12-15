@@ -3,6 +3,7 @@ package com.hst.ops.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -142,12 +143,12 @@ public class AboutPartyFragment extends Fragment implements View.OnClickListener
 
         if (v == abt_party){
 
-            abt_party.setEnabled(true);
+//            abt_party.setEnabled(true);
             partyLayout.setVisibility(View.VISIBLE);
             achieveLayout.setVisibility(View.GONE);
-            abt_party.setBackground(getResources().getDrawable(R.drawable.bt_enabled));
-            abt_party.setTextColor(getResources().getColor(R.color.white));
-            party_achievement.setBackground(getResources().getDrawable(R.drawable.bt_disabled));
+            abt_party.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.bt_enabled));
+            abt_party.setTextColor(ContextCompat.getColor(getActivity(),R.color.white));
+            party_achievement.setBackground(null);
             party_achievement.setTextColor(getResources().getColor(R.color.txt_disabled));
 
             getAboutParty();
@@ -155,13 +156,13 @@ public class AboutPartyFragment extends Fragment implements View.OnClickListener
 
         if (v == party_achievement) {
 
-            party_achievement.setEnabled(true);
+//            party_achievement.setEnabled(true);
             partyLayout.setVisibility(View.GONE);
             achieveLayout.setVisibility(View.VISIBLE);
-            party_achievement.setBackground(getResources().getDrawable(R.drawable.bt_enabled));
-            party_achievement.setTextColor(getResources().getColor(R.color.white));
+            party_achievement.setBackground(ContextCompat.getDrawable(getActivity(),R.drawable.bt_enabled));
+            party_achievement.setTextColor(ContextCompat.getColor(getActivity(),R.color.white));
+            abt_party.setBackground(null);
             abt_party.setTextColor(getResources().getColor(R.color.txt_disabled));
-            abt_party.setBackground(getResources().getDrawable(R.drawable.bt_disabled));
             stateArrayList.clear();
             getPartyStateList();
         }
