@@ -119,7 +119,6 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         if (v == back) {
             Intent homeIntent = new Intent(this, MainActivity.class);
             startActivity(homeIntent);
-            finish();
         }
         if (v == profileClick) {
             Intent proIntent = new Intent(this, ProfileActivity.class);

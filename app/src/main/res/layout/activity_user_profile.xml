@@ -12,23 +12,35 @@
         android:layout_height="200dp"
         android:background="@drawable/graadient_background">
 
-        <ImageView
-            android:id="@+id/img_back"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:padding="20dp"
-            android:src="@drawable/ic_left_arrow" />
-
-        <TextView
-            android:id="@+id/userPage"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_toEndOf="@id/img_back"
-            android:gravity="center|start"
-            android:fontFamily="@font/semi_bold"
-            android:text="@string/user_pg_title"
-            android:textColor="@color/white"
-            android:textSize="20sp"/>
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolView"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:minHeight="?android:attr/actionBarSize"/>
+
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:padding="20dp"
+                android:src="@drawable/ic_left_arrow" />
+
+            <TextView
+                android:id="@+id/userPage"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_toEndOf="@id/img_back"
+                android:gravity="center|start"
+                android:fontFamily="@font/semi_bold"
+                android:text="@string/user_pg_title"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
@@ -57,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="140dp"
                 android:layout_marginEnd="40dp"
                 android:background="@drawable/shadow_oval"
                 android:elevation="8dp">

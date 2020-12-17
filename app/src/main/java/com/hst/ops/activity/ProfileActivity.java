@@ -727,8 +727,6 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
                     Toast.makeText(getApplicationContext(), response.getString("msg"), Toast.LENGTH_SHORT).show();
 
                     Intent saveIntent = new Intent(this, UserProfileActivity.class);
-                    saveIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP |
-                            Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(saveIntent);
                 }
             }
