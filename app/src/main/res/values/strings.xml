@@ -91,6 +91,8 @@
 
     <string name="st_assembly">Legislative Assembly Election</string>
     <string name="yr">Election Year</string>
+    <string name="ldr">Party Leader</string>
+    <string name="won">Seats Won</string>
     <string name="nt_assembly">Indian General Election</string>
 
     <!--Login-->
@@ -117,5 +119,6 @@
     <string name="set_title_4">Share this app</string>
     <string name="set_title_5">Rate this app</string>
     <string name="logOut">Logout</string>
+    <string name="title" />
 
 </resources>

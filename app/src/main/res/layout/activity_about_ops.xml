@@ -52,71 +52,80 @@
             android:alpha="0.9"
             android:background="@drawable/ops_gradient">
 
-            <ImageView
-                android:id="@+id/mgr"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/imgLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:layout_marginStart="75dp"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/img_mgr" />
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginVertical="10dp">
 
-            <ImageView
-                android:id="@+id/party"
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/mgr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/img_mgr" />
+
+                <ImageView
+                    android:id="@+id/party"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/img_aiadmk" />
+
+                <ImageView
+                    android:id="@+id/jj"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/img_jaya" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/mgr"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="63dp"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/img_aiadmk" />
+                android:layout_centerInParent="true"
+                android:layout_marginHorizontal="25dp"
+                android:layout_below="@id/imgLayout">
 
-            <ImageView
-                android:id="@+id/jj"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/party"
-                android:layout_marginTop="14dp"
-                android:layout_marginStart="64dp"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/img_jaya" />
+                <ImageView
+                    android:id="@+id/ops"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/img_dcm" />
 
-            <ImageView
-                android:id="@+id/ops"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/party"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="36dp"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/img_dcm" />
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_toEndOf="@id/ops"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/semi_bold"
+                    android:text="@string/ops_fullname"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"/>
 
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_toEndOf="@id/ops"
-                android:layout_marginTop="105dp"
-                android:layout_marginStart="19dp"
-                android:fontFamily="@font/semi_bold"
-                android:text="O.Paneerselvam"
-                android:textColor="@color/white"
-                android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/designation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="16dp"
+                    android:layout_below="@id/name"
+                    android:layout_toEndOf="@id/ops"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/regular"
+                    android:text="@string/txt_designation"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"/>
 
-            <TextView
-                android:id="@+id/designation"
-                android:layout_width="wrap_content"
-                android:layout_height="16dp"
-                android:layout_below="@id/name"
-                android:layout_toEndOf="@id/ops"
-                android:layout_marginTop="2dp"
-                android:layout_marginStart="19dp"
-                android:fontFamily="@font/regular"
-                android:text="@string/txt_designation"
-                android:textColor="@color/white"
-                android:textSize="10sp"/>
-
+            </RelativeLayout>
 
         </RelativeLayout>
 

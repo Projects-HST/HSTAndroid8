@@ -89,8 +89,11 @@
     <string name="achieve">Achievements</string>
     <string name="partyName">அனைத்திந்திய அண்ணா திராவிட முன்னேற்றக் கழகம்</string>
 
+    <string name="title" />
     <string name="st_assembly">Legislative Assembly Election</string>
     <string name="yr">Election Year</string>
+    <string name="ldr">Party Leader</string>
+    <string name="won">Seats Won</string>
     <string name="nt_assembly">Indian General Election</string>
 
     <!--Login-->

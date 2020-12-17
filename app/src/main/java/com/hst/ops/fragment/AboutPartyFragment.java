@@ -249,7 +249,7 @@ public class AboutPartyFragment extends Fragment implements View.OnClickListener
         Intent intent;
         intent = new Intent(getActivity(), StateDetailActivity.class);
         intent.putExtra("stateId", partyStateList.getState_id());
-        intent.putExtra("page", "list");
+        intent.putExtra("page", partyStateList.getState_name_en());
         startActivity(intent);
     }
 }

@@ -8,10 +8,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextClock;
+import android.widget.TextView;
 
 import com.hst.ops.R;
 import com.hst.ops.adapter.PartyResultAdapter;
 import com.hst.ops.bean.support.PartyResultList;
+import com.hst.ops.bean.support.PartyStateList;
 import com.hst.ops.helper.AlertDialogHelper;
 import com.hst.ops.servicehelpers.ServiceHelper;
 import com.hst.ops.serviceinterfaces.IServiceListener;
@@ -27,11 +30,14 @@ public class StateDetailActivity extends AppCompatActivity implements View.OnCli
 
     private static final String TAG = StateDetailActivity.class.getName();
     private ImageView back;
+    private TextView pageTitle;
     private ListView st_resultList, nt_resultList;
     private ServiceHelper serviceHelper;
     private ArrayList<PartyResultList> resultArrayList;
     private PartyResultAdapter resultAdapter;
-    private String stateId;
+    private String stateId, stateName;
+    private ArrayList<PartyStateList>partyStateList;
+    PartyStateList stateList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,17 +47,28 @@ public class StateDetailActivity extends AppCompatActivity implements View.OnCli
         back = (ImageView)findViewById(R.id.img_back);
         back.setOnClickListener(this);
 
+        pageTitle =(TextView)findViewById(R.id.st_na);
         st_resultList = (ListView)findViewById(R.id.st_eleList);
         nt_resultList = (ListView)findViewById(R.id.nt_eleList);
 
         stateId = getIntent().getStringExtra("stateId");
+        stateName = getIntent().getStringExtra("page");
 
+        partyStateList = new ArrayList<>();
         resultArrayList = new ArrayList<>();
         serviceHelper = new ServiceHelper(this);
         serviceHelper.setServiceListener(this);
+
+//        pageTitle.setText(stateList.getState_name_en());
+
+        if (stateName != null){
+//            for (int i=0; i<partyStateList.size(); i++) {
+//                stateList = partyStateList.get(i);
+                pageTitle.setText(stateName);
+//            }
+        }
         getPartyElectResult();
     }
-
     private void getPartyElectResult(){
 
         JSONObject jsonObject = new JSONObject();
@@ -72,6 +89,7 @@ public class StateDetailActivity extends AppCompatActivity implements View.OnCli
         if (v == back){
             Intent backIntent = new Intent(this, AboutOPS.class);
             startActivity(backIntent);
+            finish();
         }
     }
 
