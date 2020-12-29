@@ -6,7 +6,7 @@ android {
         config {
             keyAlias 'ops_alias'
             keyPassword 'ops#123'
-            storeFile file('gms_admin.jks')
+            storeFile file('ops.jks')
             storePassword 'ops#123'
             flavorDimensions "default"
         }
@@ -65,7 +65,8 @@ android {
 
         variant.outputs.all { output ->
 //            output.outputFile = file("$project.buildDir/apk/MQube.apk")
-            outputFileName = "${variant.name}-${variant.versionName}.apk"
+//            outputFileName = "${variant.name}-${variant.versionName}.apk"
+            outputFileName = "${rootProject.name}_${variant.name}_${android.defaultConfig.versionName}.apk"
         }
     }
 
