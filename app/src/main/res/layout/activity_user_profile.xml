@@ -7,52 +7,55 @@
     tools:context=".activity.UserProfileActivity">
 
     <RelativeLayout
-        android:id="@+id/toolLayout"
+        android:id="@+id/backLay"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="60dp"
         android:background="@drawable/graadient_background">
 
-        <RelativeLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tool_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="60dp"
+            android:minHeight="?android:attr/actionBarSize" />
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolView"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:minHeight="?android:attr/actionBarSize"/>
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="20dp"
+            android:src="@drawable/ic_left_arrow" />
 
-            <ImageView
-                android:id="@+id/img_back"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:padding="20dp"
-                android:src="@drawable/ic_left_arrow" />
-
-            <TextView
-                android:id="@+id/userPage"
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:layout_toEndOf="@id/img_back"
-                android:gravity="center|start"
-                android:fontFamily="@font/semi_bold"
-                android:text="@string/user_pg_title"
-                android:textColor="@color/white"
-                android:textSize="20sp"/>
-
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/userPage"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_toEndOf="@id/back"
+            android:fontFamily="@font/semi_bold"
+            android:gravity="center|start"
+            android:text="@string/user_pg_title"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@drawable/graadient_background"
+        android:layout_below="@id/backLay"/>
+
     <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/backLay"
         android:scrollbars="vertical">
 
         <RelativeLayout
             android:id="@+id/profile"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-20dp">
 
             <com.hst.ops.customview.CircleImageView
                 android:id="@+id/profileImage"
@@ -78,7 +81,7 @@
                     android:id="@+id/userName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="100dp"
+                    android:layout_marginTop="80dp"
                     android:gravity="center"
                     android:text="@string/user_name"
                     android:textColor="@color/profile_txt" />
@@ -95,8 +98,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/view"
-                    android:layout_marginTop="20dp"
                     android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="20dp">
 
@@ -122,12 +125,12 @@
 
                     <ImageView
                         android:id="@+id/proClick"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:layout_alignTop="@id/user"
                         android:layout_alignBottom="@id/user"
+                        android:layout_alignParentEnd="true"
+                        android:padding="4dp"
                         android:src="@drawable/ic_right_arrow" />
 
                     <ImageView
@@ -142,12 +145,12 @@
                         android:id="@+id/img_title_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
                         android:layout_below="@id/user"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_toEndOf="@id/user"
                         android:fontFamily="@font/medium"
+                        android:gravity="center"
                         android:text="@string/set_title_2"
                         android:textAllCaps="false"
                         android:textColor="@color/profile_txt"
@@ -155,12 +158,12 @@
 
                     <ImageView
                         android:id="@+id/langClick"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:layout_alignTop="@id/lang"
                         android:layout_alignBottom="@id/lang"
+                        android:layout_alignParentEnd="true"
+                        android:padding="4dp"
                         android:src="@drawable/ic_right_arrow" />
 
                     <ImageView
@@ -175,12 +178,12 @@
                         android:id="@+id/img_title_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
                         android:layout_below="@id/lang"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_toEndOf="@id/user"
                         android:fontFamily="@font/medium"
+                        android:gravity="center"
                         android:text="@string/set_title_3"
                         android:textAllCaps="false"
                         android:textColor="@color/profile_txt"
@@ -188,12 +191,13 @@
 
                     <androidx.appcompat.widget.SwitchCompat
                         android:id="@+id/notify"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
                         android:layout_below="@id/img_title_2"
                         android:layout_alignTop="@id/img_title_3"
                         android:layout_alignBottom="@id/img_title_3"
                         android:layout_alignParentEnd="true"
+                        android:padding="4dp"
                         android:gravity="center" />
 
                     <ImageView
@@ -208,12 +212,12 @@
                         android:id="@+id/img_title_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
                         android:layout_below="@id/notification"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_toEndOf="@id/user"
                         android:fontFamily="@font/medium"
+                        android:gravity="center"
                         android:text="@string/set_title_4"
                         android:textAllCaps="false"
                         android:textColor="@color/profile_txt"
@@ -221,12 +225,12 @@
 
                     <ImageView
                         android:id="@+id/shareClick"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:layout_alignTop="@id/share"
                         android:layout_alignBottom="@id/share"
+                        android:layout_alignParentEnd="true"
+                        android:padding="4dp"
                         android:src="@drawable/ic_right_arrow" />
 
                     <ImageView
@@ -254,12 +258,12 @@
 
                     <ImageView
                         android:id="@+id/rateClick"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:layout_alignTop="@id/rate"
                         android:layout_alignBottom="@id/rate"
+                        android:layout_alignParentEnd="true"
+                        android:padding="4dp"
                         android:src="@drawable/ic_right_arrow" />
 
                 </RelativeLayout>
@@ -271,10 +275,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@id/lay"
-                android:layout_centerInParent="true"
-                android:layout_marginHorizontal="100dp"
-                android:layout_marginTop="80dp"
-                android:layout_marginBottom="40dp"
+                android:gravity="center"
+                android:layout_marginHorizontal="80dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="50dp"
                 android:background="@drawable/btn_log"
                 android:elevation="4dp">
 
@@ -282,18 +286,18 @@
                     android:id="@+id/imgLog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="55dp"
-                    android:src="@drawable/ic_logout"
-                    android:layout_marginTop="15dp"/>
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_logout" />
 
                 <TextView
                     android:id="@+id/txtLog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/imgLog"
-                    android:layout_marginStart="10dp"
                     android:layout_centerInParent="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/imgLog"
                     android:fontFamily="@font/semi_bold"
+                    android:maxLines="1"
                     android:text="@string/logOut"
                     android:textColor="@color/white"
                     android:textSize="18sp" />

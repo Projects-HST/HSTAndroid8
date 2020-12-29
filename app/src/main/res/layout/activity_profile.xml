@@ -6,43 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".activity.ProfileActivity">
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/save"
-        android:scrollbars="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/tool"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="60dp">
 
-            <RelativeLayout
-                android:id="@+id/tool"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/tool_bar"
                 android:layout_width="match_parent"
-                android:layout_height="60dp">
+                android:layout_height="60dp"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/graadient_background" />
 
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/tool_bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/graadient_background"/>
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/regular"
+                android:gravity="center"
+                android:text="@string/prof_title"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/txt_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="20dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerInParent="true"
-                    android:gravity="center"
-                    android:fontFamily="@font/regular"
-                    android:text="@string/prof_title"
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
+        </RelativeLayout>
 
-            </RelativeLayout>
+        <ScrollView
+            android:id="@+id/scrollPro"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/save"
+            android:layout_below="@id/tool"
+            android:scrollbars="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -51,11 +53,11 @@
 
                 <com.hst.ops.customview.CircleImageView
                     android:id="@+id/img_profile"
-                    android:layout_width="110dp"
+                    android:layout_width="125dp"
                     android:layout_height="125dp"
-                    android:layout_margin="20dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_default_profile"/>
+                    android:layout_margin="20dp"
+                    android:src="@drawable/ic_default_profile" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/in_lay_1"
@@ -71,9 +73,9 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/regular"
                         android:hint="@string/txt_name"
-                        android:textColorHint="@color/profile_txt"
                         android:inputType="text"
-                        android:textColor="@color/profile_txt"/>
+                        android:textColor="@color/profile_txt"
+                        android:textColorHint="@color/profile_txt" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -82,8 +84,8 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="20dp"
                     app:boxStrokeColor="@color/lay_outline">
 
                     <EditText
@@ -92,10 +94,10 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/regular"
                         android:hint="@string/txt_ph"
-                        android:textColorHint="@color/profile_txt"
                         android:inputType="number"
+                        android:maxLength="10"
                         android:textColor="@color/profile_txt"
-                        android:maxLength="10"/>
+                        android:textColorHint="@color/profile_txt" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -104,8 +106,8 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="20dp"
                     app:boxStrokeColor="@color/lay_outline">
 
                     <EditText
@@ -114,9 +116,9 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/regular"
                         android:hint="@string/txt_mail"
-                        android:textColorHint="@color/profile_txt"
                         android:inputType="text"
-                        android:textColor="@color/profile_txt"/>
+                        android:textColor="@color/profile_txt"
+                        android:textColorHint="@color/profile_txt" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -125,22 +127,22 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="20dp"
                     app:boxStrokeColor="@color/lay_outline">
 
                     <EditText
                         android:id="@+id/prof_dob"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_calender"
+                        android:drawablePadding="10dp"
+                        android:focusable="false"
                         android:fontFamily="@font/regular"
                         android:hint="@string/txt_dob"
-                        android:textColorHint="@color/profile_txt"
                         android:inputType="text"
                         android:textColor="@color/profile_txt"
-                        android:drawablePadding="10dp"
-                        android:drawableStart="@drawable/ic_calender"
-                        android:focusable="false"/>
+                        android:textColorHint="@color/profile_txt" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -166,11 +168,11 @@
                         android:id="@+id/male"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/regular"
                         android:layout_marginStart="20dp"
+                        android:fontFamily="@font/regular"
                         android:text="@string/txt_gen_m"
-                        android:textSize="16sp"
-                        android:textColor="@color/profile_txt" />
+                        android:textColor="@color/profile_txt"
+                        android:textSize="16sp" />
 
                     <RadioButton
                         android:id="@+id/female"
@@ -179,8 +181,8 @@
                         android:layout_marginStart="20dp"
                         android:fontFamily="@font/regular"
                         android:text="@string/txt_gen_f"
-                        android:textSize="16sp"
-                        android:textColor="@color/profile_txt" />
+                        android:textColor="@color/profile_txt"
+                        android:textSize="16sp" />
 
                     <RadioButton
                         android:id="@+id/other"
@@ -189,28 +191,42 @@
                         android:layout_marginStart="20dp"
                         android:fontFamily="@font/regular"
                         android:text="@string/txt_gen_ot"
-                        android:textSize="16sp"
-                        android:textColor="@color/profile_txt" />
+                        android:textColor="@color/profile_txt"
+                        android:textSize="16sp" />
 
                 </RadioGroup>
 
             </LinearLayout>
 
-        </LinearLayout>
+        </ScrollView>
 
-    </ScrollView>
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="30dp"
+            android:background="@drawable/button_round_app_colour"
+            android:fontFamily="@font/regular"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/button_round_app_colour"
-        android:textAllCaps="false"
-        android:fontFamily="@font/regular"
-        android:text="@string/save"
-        android:textColor="@color/white"
-        android:textSize="16sp"/>
+    </RelativeLayout>
 
 </RelativeLayout>
+
+    <!--    <Button-->
+    <!--        android:id="@+id/save"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:layout_marginVertical="20dp"-->
+    <!--        android:layout_marginHorizontal="30dp"-->
+    <!--        android:background="@drawable/button_round_app_colour"-->
+    <!--        android:fontFamily="@font/regular"-->
+    <!--        android:text="@string/save"-->
+    <!--        android:textAllCaps="false"-->
+    <!--        android:textColor="@color/white"-->
+    <!--        android:textSize="16sp" />-->

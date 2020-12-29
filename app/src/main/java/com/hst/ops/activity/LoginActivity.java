@@ -1,6 +1,7 @@
 package com.hst.ops.activity;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -46,14 +47,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private ProgressDialogHelper progressDialogHelper;
     private EditText edtNumber;
     private Button signIn;
+    private ImageView back;
     String IMEINo = "", resString = "";
     private static final int PERMISSION_REQUEST_CODE = 1;
-    private static String[] PERMISSIONS_ALL = {Manifest.permission.READ_CALENDAR,
-            Manifest.permission.WRITE_CALENDAR, Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
-    private static final int REQUEST_PERMISSION_All = 111;
+//    private static String[] PERMISSIONS_ALL = {Manifest.permission.READ_CALENDAR,
+//            Manifest.permission.WRITE_CALENDAR, Manifest.permission.ACCESS_FINE_LOCATION,
+//            Manifest.permission.ACCESS_COARSE_LOCATION,
+//            Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//            Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
+//    private static final int REQUEST_PERMISSION_All = 111;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
 
+        back = findViewById(R.id.img_back);
+        back.setOnClickListener(this);
         edtNumber = (EditText) findViewById(R.id.edtMobileNumber);
         signIn = findViewById(R.id.login);
         signIn.setOnClickListener(this);
@@ -110,33 +114,33 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         return Long.parseLong(new String(digits));
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.
-                INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(new View(this).getWindowToken(), 0);
-        return true;
-    }
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        InputMethodManager imm = (InputMethodManager) getSystemService(Context.
+//                INPUT_METHOD_SERVICE);
+//        imm.hideSoftInputFromWindow(new View(this).getWindowToken(), 0);
+//        return true;
+//    }
 
-    private void requestAllPermissions() {
-
-        boolean requestPermission = PermissionUtil.requestAllPermissions(this);
-
-        if (requestPermission) {
-
-            Log.i(TAG,
-                    "Displaying contacts permission rationale to provide additional context.");
-
-            // Display a SnackBar with an explanation and a button to trigger the request.
-
-            ActivityCompat
-                    .requestPermissions(this, PERMISSIONS_ALL,
-                            REQUEST_PERMISSION_All);
-        } else {
-
-            ActivityCompat.requestPermissions(this, PERMISSIONS_ALL, REQUEST_PERMISSION_All);
-        }
-    }
+//    private void requestAllPermissions() {
+//
+//        boolean requestPermission = PermissionUtil.requestAllPermissions(this);
+//
+//        if (requestPermission) {
+//
+//            Log.i(TAG,
+//                    "Displaying contacts permission rationale to provide additional context.");
+//
+//            // Display a SnackBar with an explanation and a button to trigger the request.
+//
+//            ActivityCompat
+//                    .requestPermissions(this, PERMISSIONS_ALL,
+//                            REQUEST_PERMISSION_All);
+//        } else {
+//
+//            ActivityCompat.requestPermissions(this, PERMISSIONS_ALL, REQUEST_PERMISSION_All);
+//        }
+//    }
 
 
     @Override
@@ -162,6 +166,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     serviceHelper.makeGetServiceCall(jsonObject.toString(), url);
                 }
             }
+        }
+
+        if (v == back){
+            Intent homeIntent = new Intent(this, MainActivity.class);
+            startActivity(homeIntent);
         }
     }
 
@@ -219,11 +228,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             if (validateSignInResponse(response)){
 
-                Log.d(TAG, response.toString());
+                String mobile = "";
+                mobile = response.getString("mobile_number");
+                PreferenceStorage.saveMobile_no(this, mobile);
             }
             Intent otpIntent = new Intent(this, OTPActivity.class);
             startActivity(otpIntent);
-
+            finish();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -233,5 +244,31 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onError(String error) {
 
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        View v = getCurrentFocus();
+
+        if (v != null &&
+                (ev.getAction() == MotionEvent.ACTION_UP || ev.getAction() == MotionEvent.ACTION_MOVE) &&
+                v instanceof EditText &&
+                !v.getClass().getName().startsWith("android.webkit.")) {
+            int scrcoords[] = new int[2];
+            v.getLocationOnScreen(scrcoords);
+            float x = ev.getRawX() + v.getLeft() - scrcoords[0];
+            float y = ev.getRawY() + v.getTop() - scrcoords[1];
+
+            if (x < v.getLeft() || x > v.getRight() || y < v.getTop() || y > v.getBottom())
+                hideKeyboard(this);
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        if (activity != null && activity.getWindow() != null && activity.getWindow().getDecorView() != null) {
+            InputMethodManager imm = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
+        }
     }
 }

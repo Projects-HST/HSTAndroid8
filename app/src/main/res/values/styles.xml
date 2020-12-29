@@ -20,8 +20,8 @@
 
     <style name="TextInputLayoutTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <item name="colorPrimary">@color/text_grey</item>
+        <item name="colorPrimaryDark">@color/text_grey</item>
+        <item name="colorAccent">@color/text_grey</item>
     </style>
-
-
 
 </resources>

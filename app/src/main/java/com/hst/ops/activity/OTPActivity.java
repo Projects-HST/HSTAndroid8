@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,6 +17,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +55,7 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
 
     private CustomOtpEditText otpEditText;
     private TextView tvResendOTP, tvCountDown;
+    private ImageView back;
     private Button btnConfirm;
     private Button btnChangeNumber;
     private String mobileNo;
@@ -76,6 +79,8 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
         }
 
         mobileNo = PreferenceStorage.getPhoneNumber(getApplicationContext());
+        back = findViewById(R.id.img_back);
+        back.setOnClickListener(this);
         otpEditText = (CustomOtpEditText) findViewById(R.id.otp_view);
         tvResendOTP = (TextView) findViewById(R.id.tryAgain);
         tvResendOTP.setOnClickListener(this);
@@ -139,13 +144,13 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
         return true;
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.
-                INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(new View(this).getWindowToken(), 0);
-        return true;
-    }
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        InputMethodManager imm = (InputMethodManager) getSystemService(Context.
+//                INPUT_METHOD_SERVICE);
+//        imm.hideSoftInputFromWindow(new View(this).getWindowToken(), 0);
+//        return true;
+//    }
 
     @Override
     public void onClick(View v) {
@@ -155,8 +160,7 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
             if (v == tvResendOTP) {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
                 alertDialogBuilder.setTitle(R.string.resend_otp);
-                alertDialogBuilder.setMessage(getString(R.string.mobile_number) + getString(R.string.mobile_number_tag) +
-                        PreferenceStorage.getPhoneNumber(getApplicationContext()));
+                alertDialogBuilder.setMessage(getString(R.string.mobile_number) + getString(R.string.mobile_number_tag) + PreferenceStorage.getMobile_no(getApplicationContext()));
                 alertDialogBuilder.setPositiveButton(R.string.alert_button_ok,
                         new DialogInterface.OnClickListener() {
 
@@ -218,6 +222,10 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
             }
         }
 
+        if (v == back){
+            Intent homeIntent = new Intent(this, MainActivity.class);
+            startActivity(homeIntent);
+        }
     }
 
     private boolean validateResponse(JSONObject response) {
@@ -272,12 +280,14 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
                     PreferenceStorage.saveUserName(getApplicationContext(), fullName);
                     PreferenceStorage.saveUserPicture(getApplicationContext(), profilePic);
                     PreferenceStorage.saveLanguageId(getApplicationContext(), language);
+
+                    Intent profileIntent = new Intent(this, ProfileActivity.class);
+                    startActivity(profileIntent);
+                    finish();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Intent profileIntent = new Intent(this, ProfileActivity.class);
-            startActivity(profileIntent);
         }
     }
     @Override
@@ -353,6 +363,31 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
         serviceHelper.makeGetServiceCall(jsonObject.toString(), url);
     }
 
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        View v = getCurrentFocus();
+
+        if (v != null &&
+                (ev.getAction() == MotionEvent.ACTION_UP || ev.getAction() == MotionEvent.ACTION_MOVE) &&
+                v instanceof EditText &&
+                !v.getClass().getName().startsWith("android.webkit.")) {
+            int scrcoords[] = new int[2];
+            v.getLocationOnScreen(scrcoords);
+            float x = ev.getRawX() + v.getLeft() - scrcoords[0];
+            float y = ev.getRawY() + v.getTop() - scrcoords[1];
+
+            if (x < v.getLeft() || x > v.getRight() || y < v.getTop() || y > v.getBottom())
+                hideKeyboard(this);
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        if (activity != null && activity.getWindow() != null && activity.getWindow().getDecorView() != null) {
+            InputMethodManager imm = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
+        }
+    }
 
 //    private void setSda() {
 //        checkVerify = "set_lang";

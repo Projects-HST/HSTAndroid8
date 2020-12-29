@@ -47,7 +47,7 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
-        back = (ImageView)findViewById(R.id.img_back);
+        back = (ImageView)findViewById(R.id.back);
         profileImage = (ImageView)findViewById(R.id.profileImage);
         profileName = (TextView)findViewById(R.id.userName);
         pushNotification = (SwitchCompat)findViewById(R.id.notify);
@@ -55,6 +55,7 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         langClick = (ImageView)findViewById(R.id.langClick);
         shareClick = (ImageView)findViewById(R.id.shareClick);
         rateClick = (ImageView)findViewById(R.id.rateClick);
+
 
         back.setOnClickListener(this);
         profileClick.setOnClickListener(this);
@@ -119,10 +120,12 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         if (v == back) {
             Intent homeIntent = new Intent(this, MainActivity.class);
             startActivity(homeIntent);
+            finish();
         }
         if (v == profileClick) {
             Intent proIntent = new Intent(this, ProfileActivity.class);
             startActivity(proIntent);
+            finish();
         }
         if (v == langClick) {
 

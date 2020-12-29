@@ -1,6 +1,7 @@
 package com.hst.ops.activity;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.ComponentName;
 import android.content.Context;
@@ -364,12 +365,12 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
         startActivityForResult(chooserIntent, REQUEST_IMAGE_GET);
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromInputMethod(new View(this).getWindowToken(), 0);
-        return true;
-    }
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//        imm.hideSoftInputFromInputMethod(new View(this).getWindowToken(), 0);
+//        return true;
+//    }
 
     private boolean validateResponse(JSONObject response) {
         boolean signInSuccess = false;
@@ -728,6 +729,7 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
 
                     Intent saveIntent = new Intent(this, UserProfileActivity.class);
                     startActivity(saveIntent);
+                    finish();
                 }
             }
         }catch (Exception ex){
@@ -872,6 +874,32 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
                 } else {
                     Toast.makeText(ProfileActivity.this, "Permission Denied!", Toast.LENGTH_SHORT).show();
                 }
+        }
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        View v = getCurrentFocus();
+
+        if (v != null &&
+                (ev.getAction() == MotionEvent.ACTION_UP || ev.getAction() == MotionEvent.ACTION_MOVE) &&
+                v instanceof EditText &&
+                !v.getClass().getName().startsWith("android.webkit.")) {
+            int scrcoords[] = new int[2];
+            v.getLocationOnScreen(scrcoords);
+            float x = ev.getRawX() + v.getLeft() - scrcoords[0];
+            float y = ev.getRawY() + v.getTop() - scrcoords[1];
+
+            if (x < v.getLeft() || x > v.getRight() || y < v.getTop() || y > v.getBottom())
+                hideKeyboard(this);
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        if (activity != null && activity.getWindow() != null && activity.getWindow().getDecorView() != null) {
+            InputMethodManager imm = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
         }
     }
 }
