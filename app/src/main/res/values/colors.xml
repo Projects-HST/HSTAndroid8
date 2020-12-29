@@ -34,9 +34,19 @@
         <item>@color/active_dot</item>
         <item>@color/active_dot</item>
         <item>@color/active_dot</item>
+        <item>@color/active_dot</item>
+        <item>@color/active_dot</item>
+        <item>@color/active_dot</item>
+        <item>@color/active_dot</item>
+        <item>@color/active_dot</item>
     </array>
 
     <array name="array_dot_inactive">
+        <item>@color/inactive_dot</item>
+        <item>@color/inactive_dot</item>
+        <item>@color/inactive_dot</item>
+        <item>@color/inactive_dot</item>
+        <item>@color/inactive_dot</item>
         <item>@color/inactive_dot</item>
         <item>@color/inactive_dot</item>
         <item>@color/inactive_dot</item>

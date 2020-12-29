@@ -111,10 +111,8 @@ public class NewsfeedDetailActivity extends AppCompatActivity implements IServic
                     SwipeRight();
                 }
             }
-
             return true;
         }
-
     };
 
     GestureDetector gestureDetector = new GestureDetector(simpleOnGestureListener);
@@ -125,7 +123,6 @@ public class NewsfeedDetailActivity extends AppCompatActivity implements IServic
         aViewFlipper.showNext();
         addBottomDots(aViewFlipper.getDisplayedChild());
     }
-
 
     private void SwipeRight() {
         aViewFlipper.setInAnimation(this, R.anim.in_from_left);
@@ -209,7 +206,6 @@ public class NewsfeedDetailActivity extends AppCompatActivity implements IServic
                         addBottomDots(aViewFlipper.getDisplayedChild());
                     }
                 }
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }

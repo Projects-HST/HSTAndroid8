@@ -1,6 +1,8 @@
 package com.hst.ops.activity;
 
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
@@ -37,6 +39,7 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class ViewVideoActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener, IServiceListener, DialogClickListener {
     private static final String TAG = "YoutubeActivity";
@@ -87,7 +90,6 @@ public class ViewVideoActivity extends YouTubeBaseActivity implements YouTubePla
             layout.addView(playerView);
             playerView.initialize(GOOGLE_API_KEY, this);
         }
-
     }
 
     @Override
