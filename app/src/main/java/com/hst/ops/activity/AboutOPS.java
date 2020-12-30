@@ -38,7 +38,6 @@ public class AboutOPS extends AppCompatActivity implements View.OnClickListener 
         tabLayout.addTab(tabLayout.newTab().setText("Achievements"));
         tabLayout.addTab(tabLayout.newTab().setText("About Party"));
 
-        tabLayout.setTabGravity(TabLayout.GRAVITY_START);
 
         AboutOpsFragmentAdapter opsAdapter = new AboutOpsFragmentAdapter(getSupportFragmentManager());
         viewPager.setAdapter(opsAdapter);

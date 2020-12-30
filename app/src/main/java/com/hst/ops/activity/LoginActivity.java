@@ -22,6 +22,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.hst.ops.R;
 import com.hst.ops.helper.AlertDialogHelper;
 import com.hst.ops.helper.ProgressDialogHelper;
@@ -45,7 +46,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private static final String TAG = LoginActivity.class.getName();
     private ServiceHelper serviceHelper;
     private ProgressDialogHelper progressDialogHelper;
-    private EditText edtNumber;
+    private TextInputEditText edtNumber;
     private Button signIn;
     private ImageView back;
     String IMEINo = "", resString = "";
@@ -68,7 +69,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         back = findViewById(R.id.img_back);
         back.setOnClickListener(this);
-        edtNumber = (EditText) findViewById(R.id.edtMobileNumber);
+        edtNumber = (TextInputEditText) findViewById(R.id.edtMobileNumber);
         signIn = findViewById(R.id.login);
         signIn.setOnClickListener(this);
 

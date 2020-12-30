@@ -108,7 +108,7 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
     private RadioButton radioButton;
     private int radioId;
     private String resString;
-    String fullName ="";
+    String fullName = "";
     String mailId = "";
     String birthDay = "";
     String gender = "";
@@ -125,7 +125,7 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
         prof_phone = (EditText) findViewById(R.id.prof_ph);
         prof_mail = (EditText) findViewById(R.id.prof_mail);
         prof_dob = (EditText) findViewById(R.id.prof_dob);
-        prof_gen = (RadioGroup)findViewById(R.id.prof_gen);
+        prof_gen = (RadioGroup) findViewById(R.id.prof_gen);
         male = (RadioButton) findViewById(R.id.male);
         female = (RadioButton) findViewById(R.id.female);
         others = (RadioButton) findViewById(R.id.other);
@@ -133,6 +133,12 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
 
         save.setOnClickListener(this);
         prof_pic.setOnClickListener(this);
+        findViewById(R.id.img_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 //        findViewById(R.id.img_back).setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -168,14 +174,12 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
             prof_name.setError(getString(R.string.error_entry));
             reqFocus(prof_name);
             return false;
-        }
-        else if (!OPSValidator.checkNullString(prof_phone.getText().toString().trim())) {
+        } else if (!OPSValidator.checkNullString(prof_phone.getText().toString().trim())) {
 
             prof_phone.setError(getString(R.string.error_entry));
             reqFocus(prof_phone);
             return false;
-        }
-        else if (prof_mail.getText().length() > 0) {
+        } else if (prof_mail.getText().length() > 0) {
 
             if (!OPSValidator.isEmailValid(this.prof_mail.getText().toString().trim())) {
                 prof_mail.setError(getString(R.string.error_entry));
@@ -230,7 +234,7 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
         }
     }
 
-    private void saveProfileData(){
+    private void saveProfileData() {
 
         resString = "saveProfile";
         String userId = PreferenceStorage.getUserId(this);
@@ -283,7 +287,7 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
         }
     }
 
-    private void showUserDetails(){
+    private void showUserDetails() {
 
         resString = "userDetails";
         String userId = PreferenceStorage.getUserId(this);
@@ -299,13 +303,12 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
 //            dialogHelper.showProgressDialog(getString(R.string.progress_bar));
             String url = OPSConstants.BUILD_URL + OPSConstants.GET_PROFILE_DETAILS;
             serviceHelper.makeGetServiceCall(jsonObject.toString(), url);
-        }
-        else {
+        } else {
             AlertDialogHelper.showSimpleAlertDialog(this, getString(R.string.error_no_net));
         }
     }
 
-    private void openImageIntent(){
+    private void openImageIntent() {
 
 // Determine Uri of camera image to save.
         File pictureFolder = Environment.getExternalStoragePublicDirectory(
@@ -469,7 +472,7 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
         }
     }
 
-    private Bitmap decodeFile(File f){
+    private Bitmap decodeFile(File f) {
 
         Bitmap b = null;
 
@@ -525,31 +528,31 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
         return b;
     }
 
-    private class UploadFileToServer extends AsyncTask<Void, Integer, String>{
+    private class UploadFileToServer extends AsyncTask<Void, Integer, String> {
 
-            private static final String TAG = "UploadFileToServer";
-            private HttpClient httpclient;
-            HttpPost httppost;
-            public boolean isTaskAborted = false;
+        private static final String TAG = "UploadFileToServer";
+        private HttpClient httpclient;
+        HttpPost httppost;
+        public boolean isTaskAborted = false;
 
-            @Override
-            protected void onPreExecute() {
+        @Override
+        protected void onPreExecute() {
             super.onPreExecute();
             dialogHelper.showProgressDialog(getString(R.string.progress_loading));
         }
 
-            @Override
-            protected void onProgressUpdate(Integer... progress) {
+        @Override
+        protected void onProgressUpdate(Integer... progress) {
 
         }
 
-            @Override
-            protected String doInBackground(Void... params) {
+        @Override
+        protected String doInBackground(Void... params) {
             return uploadFile();
         }
 
-            @SuppressWarnings("deprecation")
-            private String uploadFile() {
+        @SuppressWarnings("deprecation")
+        private String uploadFile() {
             String responseString = null;
 
             httpclient = new DefaultHttpClient();
@@ -618,8 +621,8 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
             return responseString;
         }
 
-            @Override
-            protected void onPostExecute(String result) {
+        @Override
+        protected void onPostExecute(String result) {
             Log.e(TAG, "Response from server: " + result);
             dialogHelper.hideProgressDialog();
             super.onPostExecute(result);
@@ -641,7 +644,7 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
 
         @Override
         protected void onCancelled() {
-                super.onCancelled();
+            super.onCancelled();
         }
     }
 
@@ -649,7 +652,7 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
     public void onResponse(JSONObject response) {
 
         dialogHelper.hideProgressDialog();
-        try{
+        try {
             if (validateResponse(response)) {
 
                 if (resString.equalsIgnoreCase("userDetails")) {
@@ -672,7 +675,7 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
                             prof_name.setText(fullName);
                         }
                         ph_no = object.getString("phone_number");
-                        if (ph_no != null){
+                        if (ph_no != null) {
                             prof_phone.setText(ph_no);
                         }
                         mailId = object.getString("email_id");
@@ -695,12 +698,10 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
                                 if (male.getText().toString().equals(gender)) {
 
                                     male.setChecked(true);
-                                }
-                                else if (female.getText().toString().equals(gender)) {
+                                } else if (female.getText().toString().equals(gender)) {
 
                                     female.setChecked(true);
-                                }
-                                else if (others.getText().toString().equals(gender)) {
+                                } else if (others.getText().toString().equals(gender)) {
 
                                     others.setChecked(true);
                                 }
@@ -715,8 +716,7 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
 
                             Picasso.get().load(profile_image).placeholder(R.drawable.ic_default_profile)
                                     .error(R.drawable.ic_default_profile).into(prof_pic);
-                        }
-                        else {
+                        } else {
                             prof_pic.setImageResource(R.drawable.ic_default_profile);
                         }
                     }
@@ -732,7 +732,7 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
                     finish();
                 }
             }
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
@@ -743,7 +743,8 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
         dialogHelper.hideProgressDialog();
         AlertDialogHelper.showSimpleAlertDialog(this, error);
     }
-    private void galleryAddPic(Uri uriRequest){
+
+    private void galleryAddPic(Uri uriRequest) {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         File f = new File(uriRequest.getPath());
         Uri contentUri = Uri.fromFile(f);
@@ -751,7 +752,7 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
         this.sendBroadcast(mediaScanIntent);
     }
 
-    private String getRealPathFromURI(Context context, Uri contentUri){
+    private String getRealPathFromURI(Context context, Uri contentUri) {
         String result = null;
         try {
             String[] proj = {MediaStore.Images.Media.DATA};
@@ -898,7 +899,7 @@ public class ProfileActivity extends AppCompatActivity implements DialogClickLis
 
     public static void hideKeyboard(Activity activity) {
         if (activity != null && activity.getWindow() != null && activity.getWindow().getDecorView() != null) {
-            InputMethodManager imm = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
         }
     }

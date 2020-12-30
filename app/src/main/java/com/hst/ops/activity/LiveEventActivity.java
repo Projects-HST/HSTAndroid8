@@ -247,7 +247,7 @@ public class LiveEventActivity extends YouTubeBaseActivity implements YouTubePla
                 viewVideo.setText(R.string.live_event_video_view);
                 viewVideo.setLayoutParams(layoutParamsVutton);
                 viewVideo.setGravity(Gravity.CENTER_HORIZONTAL);
-                viewVideo.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
+                viewVideo.setTextColor(ContextCompat.getColor(this, R.color.live_event_fab));
                 viewVideo.setPadding(20, 20, 20, 20);
                 viewVideo.setTextSize(20.0f);
                 viewVideo.setTypeface(Typeface.DEFAULT_BOLD);

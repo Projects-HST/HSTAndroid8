@@ -14,6 +14,23 @@
         android:elevation="5dp"
         android:orientation="vertical">
 
+
+        <TextView
+            android:id="@+id/news_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:fontFamily="@font/medium"
+            android:maxLines="1"
+            android:text="Independence Day rehearsals"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="185dp">
@@ -51,19 +68,6 @@
                 android:textSize="12sp" />
 
         </FrameLayout>
-
-        <TextView
-            android:id="@+id/news_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="20dp"
-            android:ellipsize="end"
-            android:fontFamily="@font/medium"
-            android:maxLines="1"
-            android:text="Independence Day rehearsals"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/news_description"

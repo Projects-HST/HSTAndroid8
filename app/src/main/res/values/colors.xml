@@ -29,6 +29,7 @@
     <color name="tableBg">#DCF2CF</color>
     <color name="table_txt">#050505</color>
     <color name="table_border">#AFAFAF</color>
+    <color name="grey">#2A737373</color>
 
     <array name="array_dot_active">
         <item>@color/active_dot</item>

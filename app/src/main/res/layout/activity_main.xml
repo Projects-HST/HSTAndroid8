@@ -18,7 +18,7 @@
             android:fontFamily="@font/regular"
             android:text="@string/ops_fullname"
             android:textColor="@color/white"
-            android:textSize="22sp" />
+            android:textSize="20sp" />
 
         <com.hst.ops.customview.CircleImageView
             android:id="@+id/profile"
@@ -26,6 +26,7 @@
             android:layout_height="40dp"
             android:layout_centerInParent="true"
             android:layout_alignParentEnd="true"
+            android:padding="5dp"
             android:layout_margin="10dp"
             android:src="@drawable/ic_profile_menu" />
 
@@ -50,7 +51,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
+        android:focusableInTouchMode="true"
         android:background="@drawable/graadient_background">
 
         <androidx.appcompat.widget.SearchView
@@ -59,9 +61,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_margin="10dp"
+            android:focusedByDefault="false"
+            app:iconifiedByDefault="false"
             android:background="@drawable/shadow_round"
-            android:clickable="true"
-            android:focusable="true"
             app:defaultQueryHint="Search" />
 
     </RelativeLayout>

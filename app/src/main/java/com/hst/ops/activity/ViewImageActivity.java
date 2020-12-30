@@ -8,11 +8,24 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.gson.Gson;
 import com.hst.ops.R;
+import com.hst.ops.adapter.GalleryListAdapter;
+import com.hst.ops.adapter.ImageGridListAdapter;
+import com.hst.ops.adapter.ImageListAdapter;
+import com.hst.ops.bean.support.Gallery;
+import com.hst.ops.bean.support.GalleryImageList;
+import com.hst.ops.bean.support.GalleryVideoList;
+import com.hst.ops.bean.support.ImageDetailGrid;
+import com.hst.ops.bean.support.ImageDetailGridList;
 import com.hst.ops.customview.AViewFlipper;
 import com.hst.ops.helper.AlertDialogHelper;
 import com.hst.ops.helper.ProgressDialogHelper;
@@ -32,19 +45,33 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class ViewImageActivity extends AppCompatActivity implements View.OnClickListener, IServiceListener, DialogClickListener {
+import static android.view.View.GONE;
+
+public class ViewImageActivity extends AppCompatActivity implements View.OnClickListener, IServiceListener, ImageGridListAdapter.OnItemClickListener,DialogClickListener {
 
     private static final String TAG = "NotificationActivity";
     private ServiceHelper serviceHelper;
     private ProgressDialogHelper progressDialogHelper;
+
+    private ImageView touchImage;
+    private RelativeLayout touchViewLay;
+    private GridLayoutManager mLayoutManager, mLayoutManagerImages;
+    private RecyclerView recyclerView, recyclerViewImages;
+    private SwipeRefreshLayout swipeRefreshLayout, swipeRefreshLayoutImages;
+    private ImageDetailGridList galleryImageList;
+    private ArrayList<ImageDetailGrid> galleryImagesArrayList = new ArrayList<>();
+    private ImageGridListAdapter imageGridListAdapter;
+
+
+
     private String meetingID;
     private TextView txtNewsfeedTitle, txtNewsDate, txtNewsfeedDescription, txtLikes, txtComments, txtShares;
     public ImageView newsImage;
     private ArrayList<String> imgUrl = new ArrayList<>();
-    AViewFlipper aViewFlipper;
+//    AViewFlipper aViewFlipper;
 
-    private LinearLayout dotsLayout;
-    private TextView[] dots;
+//    private LinearLayout dotsLayout;
+//    private TextView[] dots;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +85,8 @@ public class ViewImageActivity extends AppCompatActivity implements View.OnClick
             }
         });
 
-        aViewFlipper = findViewById(R.id.view_flipper);
-        dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
+//        aViewFlipper = findViewById(R.id.view_flipper);
+//        dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
 
         newsImage = (ImageView) findViewById(R.id.news_img);
         txtNewsfeedTitle = (TextView) findViewById(R.id.news_title);
@@ -74,54 +101,80 @@ public class ViewImageActivity extends AppCompatActivity implements View.OnClick
         serviceHelper.setServiceListener(this);
         progressDialogHelper = new ProgressDialogHelper(this);
 
+
+        touchImage = findViewById(R.id.viewImage);
+        touchViewLay = (RelativeLayout) findViewById(R.id.touchView);
+        touchViewLay.setOnClickListener(this);
+
+        recyclerViewImages = findViewById(R.id.recycler_view_images);
+        swipeRefreshLayoutImages = findViewById(R.id.list_refresh_images);
+        recyclerViewImages.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == android.view.MotionEvent.ACTION_UP) {
+
+                    if (!recyclerViewImages.canScrollVertically(1)) {
+
+                        swipeRefreshLayoutImages.setRefreshing(false);
+
+//                        loadmore();
+
+                    }
+                }
+                return false;
+            }
+        });
+
         getVideoDetail();
     }
 
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-        super.dispatchTouchEvent(event);
-        return gestureDetector.onTouchEvent(event);
-    }
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent event) {
+//        super.dispatchTouchEvent(event);
+//        return gestureDetector.onTouchEvent(event);
+//    }
+//
+//    GestureDetector.SimpleOnGestureListener simpleOnGestureListener = new GestureDetector.SimpleOnGestureListener() {
+//
+//        @Override
+//        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+//                               float velocityY) {
+//
+//            float sensitvity = 100;
+//            if (imgUrl.size() >= 1) {
+//                if ((e1.getX() - e2.getX()) > sensitvity) {
+//                    SwipeLeft();
+//                } else if ((e2.getX() - e1.getX()) > sensitvity) {
+//                    SwipeRight();
+//                }
+//            }
+//
+//            return true;
+//        }
+//
+//    };
 
-    GestureDetector.SimpleOnGestureListener simpleOnGestureListener = new GestureDetector.SimpleOnGestureListener() {
-
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
-                               float velocityY) {
-
-            float sensitvity = 100;
-            if (imgUrl.size() >= 1) {
-                if ((e1.getX() - e2.getX()) > sensitvity) {
-                    SwipeLeft();
-                } else if ((e2.getX() - e1.getX()) > sensitvity) {
-                    SwipeRight();
-                }
-            }
-
-            return true;
-        }
-
-    };
-
-    GestureDetector gestureDetector = new GestureDetector(simpleOnGestureListener);
-
-
-    private void SwipeLeft() {
-        aViewFlipper.setInAnimation(this, R.anim.in_from_right);
-        aViewFlipper.showNext();
-        addBottomDots(aViewFlipper.getDisplayedChild());
-    }
+//    GestureDetector gestureDetector = new GestureDetector(simpleOnGestureListener);
 
 
-    private void SwipeRight() {
-        aViewFlipper.setInAnimation(this, R.anim.in_from_left);
-        aViewFlipper.showPrevious();
-        addBottomDots(aViewFlipper.getDisplayedChild());
-    }
+//    private void SwipeLeft() {
+//        aViewFlipper.setInAnimation(this, R.anim.in_from_right);
+//        aViewFlipper.showNext();
+//        addBottomDots(aViewFlipper.getDisplayedChild());
+//    }
+//
+//
+//    private void SwipeRight() {
+//        aViewFlipper.setInAnimation(this, R.anim.in_from_left);
+//        aViewFlipper.showPrevious();
+//        addBottomDots(aViewFlipper.getDisplayedChild());
+//    }
 
     @Override
     public void onClick(View v) {
-
+        if (v == touchViewLay){
+            touchViewLay.setVisibility(GONE);
+        }
     }
 
     private void getVideoDetail() {
@@ -185,16 +238,37 @@ public class ViewImageActivity extends AppCompatActivity implements View.OnClick
                 if (OPSValidator.checkNullString(data.getJSONObject(0).getString("nf_cover_image"))) {
                     imgUrl.add(data.getJSONObject(0).getString("nf_cover_image"));
                 }
-                JSONArray images = response.getJSONArray("image_result");
-                if (imgUrl.size() >= 0) {
-                    for (int i = 0; i < images.length(); i++) {
-                        imgUrl.add(images.getJSONObject(i).getString("gallery_url"));
+                Gson gson = new Gson();
+
+                galleryImageList = gson.fromJson(response.toString(), ImageDetailGridList.class);
+                galleryImagesArrayList.addAll(galleryImageList.getGalleryArrayList());
+                imageGridListAdapter = new ImageGridListAdapter(galleryImagesArrayList, this);
+                mLayoutManagerImages = new GridLayoutManager(this, 4);
+                mLayoutManagerImages.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                    @Override
+                    public int getSpanSize(int position) {
+                        if (imageGridListAdapter.getItemViewType(position) > 0) {
+                            return imageGridListAdapter.getItemViewType(position);
+                        } else {
+                            return 1;
+                        }
+                        //return 2;
                     }
-                    for (int a = 0; a < imgUrl.size(); a++) {
-                        setImageInFlipr(imgUrl.get(a));
-                        addBottomDots(aViewFlipper.getDisplayedChild());
-                    }
-                }
+                });
+                recyclerViewImages.setLayoutManager(mLayoutManagerImages);
+                recyclerViewImages.setAdapter(imageGridListAdapter);
+                swipeRefreshLayoutImages.setRefreshing(false);
+
+//                JSONArray images = response.getJSONArray("image_result");
+//                if (imgUrl.size() >= 0) {
+//                    for (int i = 0; i < images.length(); i++) {
+//                        imgUrl.add(images.getJSONObject(i).getString("gallery_url"));
+//                    }
+//                    for (int a = 0; a < imgUrl.size(); a++) {
+////                        setImageInFlipr(imgUrl.get(a));
+////                        addBottomDots(aViewFlipper.getDisplayedChild());
+//                    }
+//                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -235,33 +309,49 @@ public class ViewImageActivity extends AppCompatActivity implements View.OnClick
         return serverFormatDate;
     }
 
-    private void setImageInFlipr(String imgUrl) {
-        ImageView image = new ImageView(this);
-        Picasso.get().load(imgUrl).into(image);
-        image.setScaleType(ImageView.ScaleType.FIT_XY);
-        aViewFlipper.addView(image);
+    @Override
+    public void onItemCClick(View view, int position) {
+        ImageDetailGrid meeting = null;
+        meeting = galleryImagesArrayList.get(position);
+//        imgLay.setClickable(true);
+        String imageUrl = meeting.getGalleryUrl();
+        if (OPSValidator.checkNullString(imageUrl)){
+            touchViewLay.setVisibility(View.VISIBLE);
+            touchImage.setVisibility(View.VISIBLE);
+            Picasso.get().load(imageUrl).into(touchImage);
+        } else {
+            touchViewLay.setVisibility(GONE);
+            touchImage.setVisibility(GONE);
+        }
     }
 
-    private void addBottomDots(int currentPage) {
-        dots = new TextView[imgUrl.size()];
-
-        int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
-        int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
-
-        dotsLayout.removeAllViews();
-        for (int i = 0; i < dots.length; i++) {
-            dots[i] = new TextView(this);
-            dots[i].setText(Html.fromHtml("&#8226;"));
-            dots[i].setTextSize(30);
-            dots[i].setTextColor(colorsInactive[currentPage]);
-            dotsLayout.addView(dots[i]);
-        }
-
-        if (dots.length > 0) {
-            dots[currentPage].setTextColor(colorsActive[currentPage]);
-            dots[currentPage].setTextSize(35);
-        }
-
-    }
+//    private void setImageInFlipr(String imgUrl) {
+//        ImageView image = new ImageView(this);
+//        Picasso.get().load(imgUrl).into(image);
+//        image.setScaleType(ImageView.ScaleType.FIT_XY);
+//        aViewFlipper.addView(image);
+//    }
+//
+//    private void addBottomDots(int currentPage) {
+//        dots = new TextView[imgUrl.size()];
+//
+//        int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
+//        int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
+//
+//        dotsLayout.removeAllViews();
+//        for (int i = 0; i < dots.length; i++) {
+//            dots[i] = new TextView(this);
+//            dots[i].setText(Html.fromHtml("&#8226;"));
+//            dots[i].setTextSize(30);
+//            dots[i].setTextColor(colorsInactive[currentPage]);
+//            dotsLayout.addView(dots[i]);
+//        }
+//
+//        if (dots.length > 0) {
+//            dots[currentPage].setTextColor(colorsActive[currentPage]);
+//            dots[currentPage].setTextSize(35);
+//        }
+//
+//    }
 
 }

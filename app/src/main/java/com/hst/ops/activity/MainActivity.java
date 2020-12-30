@@ -153,7 +153,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         if (v == imgNotification) {
-
+            Intent logIntent = new Intent(this, NotificationActivity.class);
+            startActivity(logIntent);
         }
         if (v == imgProfile) {
             if (PreferenceStorage.getUserId(this).equalsIgnoreCase("")) {

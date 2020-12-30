@@ -20,6 +20,7 @@ import com.google.gson.Gson;
 import com.hst.ops.R;
 import com.hst.ops.activity.LiveEventActivity;
 import com.hst.ops.activity.NewsfeedDetailActivity;
+import com.hst.ops.adapter.LiveEventListAdapter;
 import com.hst.ops.adapter.NewsFeedListAdapter;
 import com.hst.ops.bean.support.NewsFeed;
 import com.hst.ops.bean.support.NewsFeedList;
@@ -36,7 +37,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class EventFragment extends Fragment implements IServiceListener, DialogClickListener, NewsFeedListAdapter.OnItemClickListener, View.OnClickListener {
+public class EventFragment extends Fragment implements IServiceListener, DialogClickListener, LiveEventListAdapter.OnItemClickListener, View.OnClickListener {
 
     private static final String TAG = EventFragment.class.getName();
     private View view;
@@ -48,7 +49,7 @@ public class EventFragment extends Fragment implements IServiceListener, DialogC
     int listcount = 0;
     NewsFeedList newsFeedList;
     ArrayList<NewsFeed> newsFeedArrayList = new ArrayList<>();
-    NewsFeedListAdapter mAdapter;
+    LiveEventListAdapter mAdapter;
     LinearLayout fabView;
 
     public static EventFragment newInstance(int position) {
@@ -138,7 +139,7 @@ public class EventFragment extends Fragment implements IServiceListener, DialogC
             Gson gson = new Gson();
             newsFeedList = gson.fromJson(response.toString(), NewsFeedList.class);
             newsFeedArrayList.addAll(newsFeedList.getNewsFeedArrayList());
-            mAdapter = new NewsFeedListAdapter(newsFeedArrayList, this);
+            mAdapter = new LiveEventListAdapter(newsFeedArrayList, this);
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
             recyclerView.setLayoutManager(mLayoutManager);
             recyclerView.setAdapter(mAdapter);
