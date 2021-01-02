@@ -129,11 +129,11 @@ public class AchievementFragment extends Fragment implements IServiceListener {
 
                 for (int i=0; i<getLength; i++){
 
-                    id = object.getString("achievement_id");
-                    imageUrl = object.getString("achievement_image");
-                    title = object.getString("achievement_title_en");
-                    content = object.getString("achievement_text_en");
-                    date = object.getString("achievement_date");
+                    id = achieveArray.getJSONObject(i).getString("achievement_id");
+                    imageUrl = achieveArray.getJSONObject(i).getString("achievement_image");
+                    title = achieveArray.getJSONObject(i).getString("achievement_title_en");
+                    content = achieveArray.getJSONObject(i).getString("achievement_text_en");
+                    date = achieveArray.getJSONObject(i).getString("achievement_date");
 
                     achievementList.add(new AchievementList(id,imageUrl,title,content,date));
                 }
