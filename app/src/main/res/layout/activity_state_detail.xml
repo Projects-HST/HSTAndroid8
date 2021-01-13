@@ -147,7 +147,7 @@
                 android:id="@+id/st_eleList"
                 android:layout_width="match_parent"
                 android:layout_marginHorizontal="20dp"
-                android:layout_height="150dp" />
+                android:layout_height="190dp" />
 
             <TextView
                 android:id="@+id/ntAs"
@@ -216,7 +216,7 @@
             <ListView
                 android:id="@+id/nt_eleList"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="190dp"
                 android:layout_marginHorizontal="20dp"/>
 
         </LinearLayout>
