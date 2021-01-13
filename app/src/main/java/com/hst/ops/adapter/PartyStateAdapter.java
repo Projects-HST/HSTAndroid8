@@ -78,30 +78,16 @@ public class PartyStateAdapter extends RecyclerView.Adapter<PartyStateAdapter.My
         PartyStateList state = stateList.get(position);
 
         if (PreferenceStorage.getLang(holder.stateName.getContext()).equalsIgnoreCase("english")) {
-            holder.stateName.setText(capitalizeString(state.getState_name_en()));
+            holder.stateName.setText((state.getState_name_en()));
         }
         else {
-            holder.stateName.setText(capitalizeString(state.getState_name_ta()));
+            holder.stateName.setText((state.getState_name_ta()));
         }
         if (OPSValidator.checkNullString(state.getState_logo())) {
             Picasso.get().load(state.getState_logo()).into(holder.stateLogo);
         } else {
 //            newsImage.setImageResource(R.drawable.news_banner);
         }
-    }
-
-    public static String capitalizeString(String string) {
-        char[] chars = string.toLowerCase().toCharArray();
-        boolean found = false;
-        for (int i = 0; i < chars.length; i++) {
-            if (!found && Character.isLetter(chars[i])) {
-                chars[i] = Character.toUpperCase(chars[i]);
-                found = true;
-            } else if (Character.isWhitespace(chars[i]) || chars[i]=='.' || chars[i]=='\'') { // You can add other chars here
-                found = false;
-            }
-        }
-        return String.valueOf(chars);
     }
 
     @Override

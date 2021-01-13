@@ -64,19 +64,19 @@ public class AchievementAdapter extends BaseAdapter {
         return serverFormatDate;
     }
 
-    public static String capitalizeString(String string) {
-        char[] chars = string.toLowerCase().toCharArray();
-        boolean found = false;
-        for (int i = 0; i < chars.length; i++) {
-            if (!found && Character.isLetter(chars[i])) {
-                chars[i] = Character.toUpperCase(chars[i]);
-                found = true;
-            } else if (Character.isWhitespace(chars[i]) || chars[i]=='.' || chars[i]=='\'') { // You can add other chars here
-                found = false;
-            }
-        }
-        return String.valueOf(chars);
-    }
+//    public static String capitalizeString(String string) {
+//        char[] chars = string.toLowerCase().toCharArray();
+//        boolean found = false;
+//        for (int i = 0; i < chars.length; i++) {
+//            if (!found && Character.isLetter(chars[i])) {
+//                chars[i] = Character.toUpperCase(chars[i]);
+//                found = true;
+//            } else if (Character.isWhitespace(chars[i]) || chars[i]=='.' || chars[i]=='\'') { // You can add other chars here
+//                found = false;
+//            }
+//        }
+//        return String.valueOf(chars);
+//    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -109,15 +109,15 @@ public class AchievementAdapter extends BaseAdapter {
         }
 
         if (PreferenceStorage.getLang(holder.achieve_title.getContext()).equalsIgnoreCase("english")) {
-            holder.achieve_title.setText(capitalizeString(achieve.getAchievement_title_en()));
+            holder.achieve_title.setText((achieve.getAchievement_title_en()));
         } else {
-            holder.achieve_title.setText(capitalizeString(achieve.getAchievement_title_ta()));
+            holder.achieve_title.setText((achieve.getAchievement_title_ta()));
         }
 
         if (PreferenceStorage.getLang(holder.achieve_content.getContext()).equalsIgnoreCase("english")) {
-            holder.achieve_content.setText(capitalizeString(achieve.getAchievement_text_en()));
+            holder.achieve_content.setText((achieve.getAchievement_text_en()));
         } else {
-            holder.achieve_content.setText(capitalizeString(achieve.getAchievement_text_ta()));
+            holder.achieve_content.setText((achieve.getAchievement_text_ta()));
         }
 
         holder.achieve_date.setText(getserverdateformat(achieve.getAchievement_date()));

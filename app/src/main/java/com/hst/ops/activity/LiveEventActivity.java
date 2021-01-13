@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -265,8 +266,29 @@ public class LiveEventActivity extends YouTubeBaseActivity implements YouTubePla
                     }
                 });
 
+                ImageView imageView = new ImageView(this);
+                imageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_video_play));
+                imageView.setLayoutParams(layoutParamsVutton);
+
+
+                LinearLayout linearLayout = new LinearLayout(this);
+                linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                linearLayout.setGravity(Gravity.CENTER_VERTICAL);
+                linearLayout.addView(viewVideo);
+                linearLayout.addView(imageView);
+
+
+
+                LinearLayout.LayoutParams lineView = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 2);
+                lineView.setMargins(20,0,20,0);
+                View view = new View(this);
+                view.setLayoutParams(lineView);
+                view.setBackgroundColor(ContextCompat.getColor(this, R.color.lite_grey));
+
+
                 listLayout.addView(textViewTitle);
-                listLayout.addView(viewVideo);
+                listLayout.addView(linearLayout);
+                listLayout.addView(view);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

@@ -32,11 +32,12 @@ public class GalleryListAdapter extends RecyclerView.Adapter<GalleryListAdapter.
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView txtNewsfeedTitle, txtNewsDate, txtNewsfeedDescription, txtLikes, txtComments, txtShares;
         public LinearLayout newsfeedLayout;
-        public ImageView newsImage;
+        public ImageView newsImage, playvideo;
         public MyViewHolder(View view) {
             super(view);
             newsfeedLayout = (LinearLayout) view.findViewById(R.id.newsfeed_layout);
             newsImage = (ImageView) view.findViewById(R.id.news_img);
+            playvideo = (ImageView) view.findViewById(R.id.ic_play);
             newsfeedLayout.setOnClickListener(this);
             txtNewsfeedTitle = (TextView) view.findViewById(R.id.news_title);
             txtNewsDate = (TextView) view.findViewById(R.id.news_date);
@@ -75,6 +76,8 @@ public class GalleryListAdapter extends RecyclerView.Adapter<GalleryListAdapter.
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Gallery newsFeed = newsFeedArrayList.get(position);
+
+        holder.playvideo.setVisibility(View.VISIBLE);
 
         if (PreferenceStorage.getLang(holder.txtNewsfeedTitle.getContext()).equalsIgnoreCase("english")) {
             holder.txtNewsfeedTitle.setText(capitalizeString(newsFeed.getTitleEnglish()));

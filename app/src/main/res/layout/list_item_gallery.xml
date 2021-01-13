@@ -45,6 +45,17 @@
                 android:background="@drawable/shadow_circle"
                 android:src="@drawable/ic_heart" />
 
+            <ImageView
+                android:id="@+id/ic_play"
+                android:layout_width="40dp"
+                android:layout_height="28dp"
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp"
+                android:visibility="gone"
+                android:elevation="5dp"
+                android:background="@drawable/shadow_circle"
+                android:src="@drawable/ic_video_play" />
+
         </RelativeLayout>
 
         <TextView

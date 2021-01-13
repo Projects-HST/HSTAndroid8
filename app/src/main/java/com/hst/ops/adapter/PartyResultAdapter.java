@@ -43,20 +43,6 @@ public class PartyResultAdapter extends BaseAdapter {
         return position;
     }
 
-    public static String capitalizeString(String string) {
-        char[] chars = string.toLowerCase().toCharArray();
-        boolean found = false;
-        for (int i = 0; i < chars.length; i++) {
-            if (!found && Character.isLetter(chars[i])) {
-                chars[i] = Character.toUpperCase(chars[i]);
-                found = true;
-            } else if (Character.isWhitespace(chars[i]) || chars[i]=='.' || chars[i]=='\'') { // You can add other chars here
-                found = false;
-            }
-        }
-        return String.valueOf(chars);
-    }
-
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -83,9 +69,9 @@ public class PartyResultAdapter extends BaseAdapter {
         holder.eleYear.setText(result.getElection_year());
 
         if (PreferenceStorage.getLang(holder.partyLeader.getContext()).equalsIgnoreCase("english")) {
-            holder.partyLeader.setText(capitalizeString(result.getParty_leader_en()));
+            holder.partyLeader.setText((result.getParty_leader_en()));
         } else {
-            holder.partyLeader.setText(capitalizeString(result.getParty_leader_ta()));
+            holder.partyLeader.setText((result.getParty_leader_ta()));
         }
         holder.seatsWon.setText(result.getSeats_won());
 
